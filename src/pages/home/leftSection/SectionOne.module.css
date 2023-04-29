@@ -9,6 +9,7 @@
 }
 .tweet_logo{
     margin-left: 1rem;
+    cursor: pointer;
 }
 .sidebar {
   width: 22%;
@@ -31,6 +32,7 @@ a{
     padding: .5rem 1rem;
     /* margin-left: 3rem; */
     list-style: none;
+    cursor: pointer;
 }
 .icons{
     margin-right: 1rem;
@@ -39,6 +41,7 @@ a{
 .logo{
     color:rgb(26, 133, 220);
     font-size: 1.6rem;
+    cursor: pointer;
 }
 
 

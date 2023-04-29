@@ -17,6 +17,7 @@ import Tooltip from "@mui/material/Tooltip";
 import SectionOne from "./leftSection/SectionOne";
 import MenuSection from "./MenuSection";
 import UserFollowData from "../../component/UserFollowData";
+import RightSection from "./rightSection/RightSection";
 
 export default function Home() {
   const [isTweet, setIsTweet] = useState(true);
@@ -31,7 +32,7 @@ export default function Home() {
     if (!userName) {
       navigate("/login");
     }
-  }, []);
+  }, [userName]);
   return (
     <div className={style.main_div}>
       <div className={style.div1}>
@@ -166,7 +167,9 @@ export default function Home() {
         </div>
       </div>
 
-      <div className={style.div3}>{/* <h1>div3</h1> */}</div>
+      <div className={style.div3}>
+        <RightSection/>
+      </div>
     </div>
   );
 }

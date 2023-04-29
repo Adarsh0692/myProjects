@@ -72,7 +72,7 @@ export default function MenuSection() {
   return (
     <div className={style.main_Dive}>
       <div>
-        <span className={style.tweet_logo}>
+        <span className={style.tweet_logo} onClick={()=> navigate('/')}>
           <TwitterIcon
             sx={{
               color: " rgb(29, 155, 240)",
@@ -120,10 +120,10 @@ export default function MenuSection() {
               </div>
               <div className={style.username}>
                 <div>
-                  <span className={style.name}>{userName.name} </span>
+                  <span className={style.name}>{userName? userName.name : ''} </span>
                 </div>
                 <div>
-                  <span className={style.email}>{userName.email}</span>
+                  <span className={style.email}>{userName? userName.email : ''}</span>
                 </div>
               </div>
               <div className={style.More}>
@@ -163,7 +163,7 @@ export default function MenuSection() {
               >
                 <span className={style.popoverName} onClick={handleLogout}>
                   {" "}
-                  Log out {userName.email}
+                  Log out {userName? userName.email : ''}
                 </span>
               </Typography>
             </Popover>

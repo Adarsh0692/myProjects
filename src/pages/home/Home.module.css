@@ -122,13 +122,13 @@
 }
 .profile_div{
     /* border: red 2px solid;  */
-    max-height: 80vh;
+    /* max-height: 80vh; */
     /* overflow-y: scroll; */
     /* padding: 0 10px; */
 }
 
 .scroll{
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     /* border: red 2px solid;  */
     /* margin-top: -5rem; */
 }

@@ -5,6 +5,7 @@
   width: 50%;
   margin-left: 25%;
   border-right: 1px solid #e6ecf0;
+ 
 }
 .posts__home {
   width: 50%;
@@ -75,6 +76,7 @@
 .postss {
   padding: 20px;
   border-bottom: 1px solid #e6ecf0;
+  border: 1px solid #eee;
 }
 .postss__first {
   display: flex;
@@ -86,26 +88,42 @@
   height: 50px;
   overflow: hidden;
   border-radius: 50%;
+  cursor: pointer;
 }
 .posts__first__img img {
   width: 100%;
   height: 100%;
 }
 .posts__first__name {
-  margin-left: 6px;
-  
+  margin-left: 1px;
+  /* border: red 1px solid; */
+  width: auto;
+  padding: 0 10px;
+  font-size: 13px;
 }
 .posts__first__username {
-  margin-left: 6px;
+  margin-right: -4rem;
+  font-family: inherit;
   /* color: silver; */
   color: rgb(83, 100, 113);
   font-weight: 300;
   font-family: inherit;
+  /* border: red 1px solid; */
+ width:20vw;
+
+}
+.user_names{
+  /* border: red 1px solid; */
+  margin: 0;
+  display: flex;
+  cursor: pointer;
+  
 }
 .posts__first__username span {
   display: inline-block;
   margin-left: 5px;
   font-size: 14px;
+  /* border: red 1px solid; */
  
 }
 .verify {
@@ -148,6 +166,9 @@
    color: rgb(200, 54, 54);
    cursor: pointer;
 }
+.view{
+  font-size: 10px;
+}
 .views:hover{
    color:rgb(50, 190, 206);
    cursor: pointer;
@@ -156,69 +177,8 @@
    color:rgb(50, 190, 206);
    cursor: pointer;
 }
-.trends {
-  width: 25%;
-}
-.trends__search {
-  position: fixed;
-  width: 25%;
-  top: 10px;
-  right: 0;
-  /* border-bottom: 1px solid #e6ecf0; */
-  padding-bottom: 20px;
-  margin-left: 20px;
-}
-.trend__control {
-  border: none;
-  width: 90%;
-  margin-left: 20px;
-  outline: none;
-  background: #f5f4f2;
-  border-radius: 50px;
-  padding: 15px 40px;
-}
-.trend__icon {
-  position: absolute;
-  top: 15px;
-  left: 40px;
-}
-.search {
-  font-size: 20px;
-  color: silver;
-}
-.keywords {
-  position: fixed;
-  top: 80px;
-  right: 0;
-  width: 25%;
-  padding: 20px 20px;
-}
-.key {
-  background: #f5f8fa;
-  padding: 15px;
-  border-radius: 5px;
-}
-.keyword__heading {
-  font-size: 20px;
-  border-bottom: 1px solid #e6ecf0;
-  padding-bottom: 8px;
-}
-.country {
-  font-size: 14px;
-  color: silver;
-  font-weight: 300;
-  margin: 10px 0;
-}
-.keyword__name {
-  margin-bottom: 8px;
-}
-.keyword__tweets {
-  margin-top: 7px;
-  color: silver;
-  font-size: 14px;
-  font-weight: 300;
-}
+
 .more{
-  margin-left: 7rem;
+  margin-left: 8rem;
   /* font-size: 1px; */
 }

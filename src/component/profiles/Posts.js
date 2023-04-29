@@ -11,9 +11,7 @@ import Typography from "@mui/material/Typography";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
-import MoreHorizSharpIcon from '@mui/icons-material/MoreHorizSharp';
-
-
+import MoreHorizSharpIcon from "@mui/icons-material/MoreHorizSharp";
 
 const Posts = ({
   content,
@@ -49,29 +47,33 @@ const Posts = ({
             alt="profile img"
           />
         </div>
-        <div className="posts__first__name">
-          <strong>{name}</strong> <GoVerified className="verify" />
+        <div className="user_names">
+          <div className="posts__first__name">
+            <strong>{name}</strong>
+          </div>
+          <div className="posts__first__username">
+            <GoVerified className="verify" /> {email} <span>{time}</span>
+          </div>
+          <Tooltip title="More">
+            <span className="more">
+              <MoreHorizSharpIcon />
+            </span>
+          </Tooltip>
         </div>
-        <div className="posts__first__username">
-          {email} <span>{time}</span>
-        </div>
-        <Tooltip title="More">
-        <span className="more">
-        
-          <MoreHorizSharpIcon />
-         
-        </span>
-        </Tooltip>
       </div>
       <div className="postss__details">
         <div className="postss__details__msg">{content}</div>
         <div className="postss__details__img">
-          <img onDoubleClick={handleLike}  src={`https://picsum.photos/1000/500?q=${retweet}`} alt="post" />
+          <img
+            onDoubleClick={handleLike}
+            src={`https://picsum.photos/1000/500?q=${retweet}`}
+            alt="post"
+          />
         </div>
         <div className="reactions">
           <span className="comment">
             <Tooltip title="Reply">
-              <ModeCommentOutlinedIcon />
+              <ModeCommentOutlinedIcon sx={{fontSize:'18px'}} />
             </Tooltip>{" "}
             {commentCount}
           </span>
@@ -79,10 +81,9 @@ const Posts = ({
           <PopupState variant="popover" popupId="demo-popup-popover">
             {(popupState) => (
               <div>
-               
                 <span className="retweet">
                   <Tooltip title="Retweet">
-                    <RepeatIcon {...bindTrigger(popupState)} />
+                    <RepeatIcon {...bindTrigger(popupState)} sx={{fontSize:'18px'}}/>
                   </Tooltip>{" "}
                   {retweet}
                 </span>
@@ -132,7 +133,7 @@ const Posts = ({
           <span className="like" onClick={handleLike}>
             {like ? (
               <Tooltip title="Like">
-                <FavoriteBorderIcon />
+                <FavoriteBorderIcon sx={{fontSize:'18px'}}/>
               </Tooltip>
             ) : (
               <Tooltip title="Unlike">
@@ -143,13 +144,13 @@ const Posts = ({
           </span>
           <span className="views">
             <Tooltip title="View">
-              <EqualizerSharpIcon />
+              <EqualizerSharpIcon sx={{fontSize:'18px'}}/>
             </Tooltip>{" "}
             {views}
           </span>
           <span className="share">
             <Tooltip title="share">
-              <IosShareIcon />
+              <IosShareIcon sx={{fontSize:'18px'}}/>
             </Tooltip>
           </span>
         </div>
