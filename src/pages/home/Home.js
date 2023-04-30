@@ -18,25 +18,39 @@ import SectionOne from "./leftSection/SectionOne";
 import MenuSection from "./MenuSection";
 import UserFollowData from "../../component/UserFollowData";
 import RightSection from "./rightSection/RightSection";
+import data from '../../data/userFake_DATA .json'
 
 export default function Home() {
   const [isTweet, setIsTweet] = useState(true);
+  const [tweet, setTweet] = useState({
+    
+  })
+  const [tweets, setTweets] = useState(data)
  
   const navigate = useNavigate();
   const inputref = useRef(null);
-  // const isLogin = localStorage.getItem('login')
+ 
   const userDetails = JSON.parse(localStorage.getItem("userData")) || [];
   const userName = userDetails.find((name) => name.active.isActive === true);
-  // console.log(userName.name);
+
   useEffect(() => {
     if (!userName) {
       navigate("/login");
     }
   }, [userName]);
+
+  function handleTweetInput(e){
+    setTweet(e.target.value)
+  }
+
+  function handleTweetBtn(){
+
+  }
+
   return (
     <div className={style.main_div}>
       <div className={style.div1}>
-        {/* <SectionOne/> */}
+       
         <MenuSection />
       </div>
 
@@ -45,7 +59,7 @@ export default function Home() {
           <div className={style.transparent}>
             <div className={style.home}>
               <span title="home page">Home </span>
-              {/* <p>{userName? userName.name : ''}</p> */}
+             
             </div>
             <div className={style.insideHome}>
               <div className={style.foryou} onClick={() => setIsTweet(true)}>
@@ -78,11 +92,14 @@ export default function Home() {
             </div>
             <div className={style.commentText}>
               <Input
+              onChange={handleTweetInput}
+              value={tweet}
                 sx={{
                   width: "100%",
                   fontSize: "1.5rem",
                 }}
                 placeholder="What's happening?"
+
               />
               
 
@@ -144,6 +161,7 @@ export default function Home() {
                 </div>
                 <div className={style.Twittebtn}>
                   <Button
+                  onClick={handleTweetBtn}
                     variant="contained"
                     sx={{
                       borderRadius: "35px",
