@@ -12,6 +12,7 @@ import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutli
 import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import MoreHorizSharpIcon from "@mui/icons-material/MoreHorizSharp";
+import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
 
 const Posts = ({
   content,
@@ -54,11 +55,79 @@ const Posts = ({
           <div className="posts__first__username">
             <GoVerified className="verify" /> {email} <span>{time}</span>
           </div>
-          <Tooltip title="More">
-            <span className="more">
+
+
+          {/* <Tooltip title="More">
+            <span className="more"> 
               <MoreHorizSharpIcon />
             </span>
+          </Tooltip> */}
+<span className="more"> 
+
+<PopupState variant="popover" popupId="demo-popup-popover">
+                      {(popupState) => (
+                        <div>
+                          <div
+                            
+                            {...bindTrigger(popupState)}
+                          >
+                            <Tooltip title="More">
+            
+              <MoreHorizSharpIcon />
+            
           </Tooltip>
+                            
+                          </div>
+
+                          <Popover
+                            {...bindPopover(popupState)}
+                            anchorOrigin={{
+                              vertical: "bottom",
+                              horizontal: "left",
+                            }}
+                            transformOrigin={{
+                              vertical: "center",
+                              horizontal: "right",
+                            }}
+                          >
+                            <Typography
+                              sx={{
+                                p: 1,
+                                cursor: "pointer",
+                                ":hover": { background: "#f5f4f2" },
+                              }}
+                            >
+                              <span  >
+                                {" "}
+                                <SentimentVeryDissatisfiedIcon
+                                  sx={{ fontSize: "17px" }}
+                                />{" "}
+                                Not interested in this
+                              </span>
+                            </Typography>
+                            <Typography
+                              sx={{
+                                p: 1,
+                                cursor: "pointer",
+                                ":hover": { background: "#f5f4f2" },
+                              }}
+                            >
+                              <span >
+                                {" "}
+                                <SentimentVeryDissatisfiedIcon
+                                  sx={{ fontSize: "17px" }}
+                                />{" "}
+                                This trend is harmful or spammy
+                              </span>
+                            </Typography>
+                          </Popover>
+                        </div>
+                      )}
+                    </PopupState>
+
+                    </span>
+
+
         </div>
       </div>
       <div className="postss__details">

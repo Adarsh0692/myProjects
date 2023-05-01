@@ -22,10 +22,8 @@ import data from '../../data/userFake_DATA .json'
 
 export default function Home() {
   const [isTweet, setIsTweet] = useState(true);
-  const [tweet, setTweet] = useState({
-    
-  })
-  const [tweets, setTweets] = useState(data)
+  const [tweet, setTweet] = useState()
+  // const [tweets, setTweets] = useState(data)
  
   const navigate = useNavigate();
   const inputref = useRef(null);
