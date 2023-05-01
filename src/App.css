@@ -137,10 +137,14 @@
 }
 .postss__details__img {
   width: 100%;
+
+  /* border-radius: 10px; */
   margin-top: 6px;
   cursor: pointer;
 }
 .postss__details__img img {
+  /* border: 2px red solid; */
+  border-radius: 15px;
   width: 100%;
 }
 .reactions {

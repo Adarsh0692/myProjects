@@ -33,6 +33,10 @@ a{
     /* margin-left: 3rem; */
     list-style: none;
     cursor: pointer;
+    /* border: 1px red solid;  */
+    display: flex;
+    /* justify-content: center; */
+    /* justify-content: space-around; */
 }
 .icons{
     margin-right: 1rem;

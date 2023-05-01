@@ -9,7 +9,7 @@
 }
 .form_box{
     /* border:2px red solid; */
-    width: 45vw;
+    width: 40vw;
     height: 90vh;
     background-color: white;
     border-radius: 15px;
@@ -29,11 +29,12 @@
 .logo {
     /* border:2px red solid; */
     text-align: center;
-    width: 44vw;
+    width: 36vw;
 }
 .cross{
     /* border:2px red solid; */
     margin-top: 10px;
+    margin-left: 12px;
 }
 .form{
     /* border:2px red solid; */
@@ -53,6 +54,9 @@
     flex-direction: column;
     gap: 30px;
 
+}
+.signupColor{
+    color: rgb(29, 155, 240);
 }
 
 

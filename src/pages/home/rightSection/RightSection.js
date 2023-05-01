@@ -52,20 +52,51 @@ export default function RightSection() {
       image:
         "https://i0.wp.com/wikibiostars.in/wp-content/uploads/2022/12/Dumi-Mkokstad.jpg",
     },
+    {
+      title: "Trending in Bollywood",
+      name: "#AmirKhan",
+      tweets: "3.2k Tweets",
+      Names: "AmirKhan",
+      email: "@amir",
+      isFollow: true,
+      image:
+        "https://i0.wp.com/wikibiostars.in/wp-content/uploads/2022/12/Dumi-Mkokstad.jpg",
+    },
+    {
+      title: "Trending in Bollywood",
+      name: "#salmanKhan",
+      tweets: "1.2k Tweets",
+      Names: "salman",
+      email: "@salman",
+      isFollow: true,
+      image:
+        "https://i0.wp.com/wikibiostars.in/wp-content/uploads/2022/12/Dumi-Mkokstad.jpg",
+    },
+    {
+      title: "Trending in Hollywood",
+      name: "#Priyanka",
+      tweets: "10k Tweets",
+      Names: "Priyanka",
+      email: "@priyanka",
+      isFollow: true,
+      image:
+        "https://i0.wp.com/wikibiostars.in/wp-content/uploads/2022/12/Dumi-Mkokstad.jpg",
+    },
   ];
 
   const [follow1, setFollow] = useState(true);
   const [follow2, setFollow2] = useState(true);
   const [follow3, setFollow3] = useState(true);
   const [follow4, setFollow4] = useState(true);
-  const [list, setList] = useState(happeningData)
+  const [list, setList] = useState(happeningData);
+  const [showMore, setShowMore] = useState(false)
 
   function handleClcik() {
     setFollow(!follow1);
   }
 
   function handleNotInterested(user){
-     const deleted = list.filter(ele => user != ele)
+     const deleted = list.filter(ele => user !== ele)
      setList(deleted)
   }
   
@@ -86,7 +117,7 @@ export default function RightSection() {
           </div>
 
           <div className={style.box}>
-            {list.map((user, index) => {
+            {list.slice(0,4).map((user, index) => {
               return (
                 <div key={index} className={style.mapBox}>
                   <div>
@@ -179,32 +210,32 @@ export default function RightSection() {
               name={happeningData[0].Names}
               email={happeningData[0].email}
               onClick={handleClcik}
-              follow={follow1 ? "Follow" : "Unfollow"}
+              follow={follow1 ? "Follow" : "following"}
             />
             <Data
               src={happeningData[1].image}
               name={happeningData[1].Names}
               email={happeningData[1].email}
               onClick={() => setFollow2(!follow2)}
-              follow={follow2 ? "Follow" : "Unfollow"}
+              follow={follow2 ? "Follow" : "Following"}
             />
             <Data
               src={happeningData[2].image}
               name={happeningData[2].Names}
               email={happeningData[2].email}
               onClick={() => setFollow3(!follow3)}
-              follow={follow3 ? "Follow" : "Unfollow"}
+              follow={follow3 ? "Follow" : "following"}
             />
             <Data
               src={happeningData[3].image}
               name={happeningData[3].Names}
               email={happeningData[3].email}
               onClick={() => setFollow4(!follow4)}
-              follow={follow4 ? "Follow" : "Unfollow"}
+              follow={follow4 ? "Follow" : "Following"}
             />
-            <div className={style.followMore}>
+            {/* <div className={style.followMore}>
               <Link underline="none">show more</Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -224,9 +255,10 @@ function Data({ src, name, email, onClick, follow }) {
       </div>
       <div className={style.followBtn}>
         <Button
-          sx={{ backgroundColor: "black", borderRadius: "20px" }}
+          sx={{ backgroundColor: "black", borderRadius: "20px", textTransform: "capitalize" }}
           variant="contained"
           onClick={onClick}
+          
         >
           {follow}
         </Button>

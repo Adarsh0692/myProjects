@@ -9,17 +9,22 @@
 }
 .form_box{
     /* border:2px red solid; */
-    width: 45vw;
+    width: 40vw;
     height: 90vh;
     background-color: white;
     border-radius: 15px;
+    /* text-align: center; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     
     
 }
 .form_data{
-   
-    height: 100%;
-    margin: 0 128px;
+    /* border:2px red solid; */
+    height: 80%;
+    width: 30vw;
+    /* margin: 0 128px; */
     /* text-align: center; */
 }
 .form_buttons{
@@ -40,7 +45,7 @@
     font-size: 13px;
 }
 .create_field span{
-    color: blue;
+    color: rgb(29, 155, 240);
 }
 .header{
    
@@ -50,7 +55,7 @@
 .logo {
     /* border:2px red solid; */
     text-align: center;
-    width: 44vw;
+    width: 36vw;
 }
 .cross{
     /* border:2px red solid; */

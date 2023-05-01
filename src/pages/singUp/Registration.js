@@ -4,7 +4,8 @@ import {Link, useNavigate } from 'react-router-dom';
 import style from './Registration.module.css'
 // import Button from ?'@mui/material/Button';
 import { TextField, Button } from '@mui/material';
-import GoogleIcon from '@mui/icons-material/Google';
+// import GoogleIcon from '@mui/icons-material/Google';
+import {FcGoogle} from 'react-icons/fc'
 import AppleIcon from '@mui/icons-material/Apple';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import CloseIcon from '@mui/icons-material/Close';
@@ -142,7 +143,7 @@ export default function Registration() {
                 <h1>Join Twitter today</h1>
               </div>
 
-              <Button sx={{ borderRadius: '40px', color: 'black' }} variant="outlined"> <GoogleIcon /> Sign Up with Google</Button>
+              <Button sx={{ borderRadius: '40px', color: 'black' }} variant="outlined"> <FcGoogle size={20}/> Sign Up with Google</Button>
               <Button sx={{ borderRadius: '40px', color: 'black' }} variant="outlined"> <AppleIcon /> Sign Up with Apple</Button>
               
               <div className={style.hrr}>
@@ -168,7 +169,7 @@ export default function Registration() {
             <div className={style.textfield} style={{ display: hide ? '' : 'none' }}>
               <h1>Create your account</h1>
 
-              <TextField sx={{
+              <TextField sx={{ 
                 width: '100%'
               }} label="Name" variant="outlined" type='text'  value={name}  onChange={handleName} />
               <TextField sx={{

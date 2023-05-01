@@ -6,7 +6,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import GoogleIcon from "@mui/icons-material/Google";
 import AppleIcon from "@mui/icons-material/Apple";
 import { TextField, Button } from "@mui/material";
-
+import {FcGoogle} from 'react-icons/fc'
 import IconButton from "@mui/material/IconButton";
 
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -104,15 +104,10 @@ export default function MyLogin() {
             variant="outlined"
           >
             {" "}
-            <GoogleIcon /> Sign Up with Google
+            <FcGoogle size={20} /> Sign Up with Google
           </Button>
-          <Button
-            sx={{ borderRadius: "35px", color: "black", ":hover": {backgroundColor: '#dfe1e3', border: '1px solid #eee'}, border: '1px solid #eee' }}
-            variant="outlined"
-          >
-            {" "}
-            <AppleIcon /> Sign Up with Apple
-          </Button>
+          
+          <Button sx={{ borderRadius: '40px', color: 'black' }} variant="outlined"> <AppleIcon /> Sign Up with Apple</Button>
 
           <span>or</span>
           <TextField
@@ -141,7 +136,7 @@ export default function MyLogin() {
             Forgot Password?
           </Button>
           <p>
-            Don't have an account? <Link to="/signup">Sign up</Link>{" "}
+            Don't have an account? <Link to="/signup"><span className={style.signupColor}>Sign up</span></Link>{" "}
           </p>
         </div>
         <div style={{ display: hide ? "none" : "" }}>
@@ -195,7 +190,7 @@ export default function MyLogin() {
               Log in{" "}
             </Button>
             <p>
-              Don't have an account? <Link to="/signup"> <span >Sign up</span></Link>{" "}
+              Don't have an account? <Link to="/signup"> <span className={style.signupColor}>Sign up</span></Link>{" "}
             </p>
           </div>
         </div>

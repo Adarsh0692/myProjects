@@ -31,7 +31,7 @@ const Posts = ({
   userId,
   handleDlete
 }) => {
-  const [like, setLike] = useState(isLike);
+  const [like, setLike] = useState(true);
   const [likesCount, setLikeCount] = useState(likeCount);
   // const [deleteTweet, setDeleteTweet] = useState([user])
 
@@ -65,11 +65,7 @@ const Posts = ({
             <GoVerified className="verify" /> {email} <span>{time}</span>
           </div>
 
-          {/* <Tooltip title="More">
-            <span className="more"> 
-              <MoreHorizSharpIcon />
-            </span>
-          </Tooltip> */}
+        
           <span className="more">
             <PopupState variant="popover" popupId="demo-popup-popover">
               {(popupState) => (

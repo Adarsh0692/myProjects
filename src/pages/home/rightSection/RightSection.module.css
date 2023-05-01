@@ -60,7 +60,8 @@
     /* border: red 2px solid; */
     border-radius: 10px;
     margin-top: 1rem;
-    height: 72vh;
+    width: 25vw;
+    height: auto;
     /* padding: 0 1rem; */
     background-color: #eff1f4;
 }
@@ -110,10 +111,7 @@
     font-size: smaller;
     font-weight: 400;
 }
-.more{
-    /* border: red 2px solid; */
-    margin-right: 10px;
-}
+
 .showmore{
     /* border: red 2px solid;  */
     border-radius: 0 0px 10px 10px;
@@ -173,4 +171,7 @@
 .followMore:hover{
     background-color: #dfe1e3;
 }
-
+.followBtn{
+    /* border: red 2px solid; */
+    margin-left: 2rem;
+}

@@ -21,33 +21,44 @@ import RightSection from "./rightSection/RightSection";
 import data from '../../data/userFake_DATA .json'
 
 export default function Home() {
+  const storeduser = JSON.parse(localStorage.getItem('userData')) || []
+  const userName = storeduser.find((name) => name.active.isActive === true);
+
+  var today = new Date();
+  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  var dateTime = date+' '+time;
+
+  const [disabled, setDisabled] = useState(true)
   const [isTweet, setIsTweet] = useState(true);
+  const [image, setImage] = useState("");
+  
   const [tweet, setTweet] = useState(
     {
-      "id": 1,
-      "name": "adarsh@gmail.com",
-      "time": "8:08 AM",
-      "email": "fimpey0@so-net.ne.jp",
-      "content": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
-      "comments": 86,
-      "shareCount": 158,
-      "likeCount": 260,
-      "views": 535,
-      "retweet": 163,
+      "id": Date.now(),
+      "name": '' ,
+      "time": dateTime,
+      "email": '',
+      "content": "",
+      "comments": Math.floor(Math.random() * 900) + 100,
+      "shareCount": Math.floor(Math.random() * 900) + 100,
+      "likeCount": Math.floor(Math.random() * 900) + 100,
+      "views": Math.floor(Math.random() * 900) + 100,
+      "retweet": Math.floor(Math.random() * 900) + 100,
       "islike": false,
       "isfollow": false,
-      "Image": "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "Image": image,
+      // "emoji" : selectedEmoji
     }
   )
-  const [tweets, setTweets] = useState(data)
+  const [tweets, setTweets] = useState(data.slice(0,30))
 
   
  
   const navigate = useNavigate();
   const inputref = useRef(null);
  
-  const userDetails = JSON.parse(localStorage.getItem("userData")) || [];
-  const userName = userDetails.find((name) => name.active.isActive === true);
+ 
 
   useEffect(() => {
     if (!userName) {
@@ -58,18 +69,31 @@ export default function Home() {
   function handleTweetInput(e){
     setTweet({...tweet,
       [e.target.name]: e.target.value,
-      
-    })
+      "name": userName.name ,
+      "email": userName.email,
+    });
+    setDisabled(false)
+
+  }
+
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const selectedImage = reader.result
+      setImage(selectedImage)
+    }
   }
 
   function handleTweetBtn(){
-    // if(tweet.trim() !== ''){
-    //   setTweet([tweet, ...tweets])
-    // }
+   
     const newDatas = [tweet,...tweets]
-        console.log(tweets.length)
+        // console.log(tweets.length)
         setTweets(newDatas)
         setTweet('')
+        setImage('')
+    
   }
 
   return (
@@ -122,7 +146,7 @@ export default function Home() {
               name="content"
                 sx={{
                   width: "100%",
-                  fontSize: "1.5rem",
+                  fontSize: "1rem",
                 }}
                 placeholder="What's happening?"
 
@@ -131,7 +155,7 @@ export default function Home() {
             
               
 
-              <input type="file" ref={inputref} hidden />
+              <input type="file" ref={inputref} hidden onChange={handleFileInputChange}/>
 
               <div className={style.texticons}>
                 <div className={style.icons}>
@@ -190,6 +214,7 @@ export default function Home() {
                 <div className={style.Twittebtn}>
                   <Button
                   onClick={handleTweetBtn}
+                  disabled={disabled}
                     variant="contained"
                     sx={{
                       borderRadius: "35px",

@@ -120,18 +120,7 @@
 .Twittebtn{
     margin-top: .5rem;
 }
-.profile_div{
-    /* border: red 2px solid;  */
-    /* max-height: 80vh; */
-    /* overflow-y: scroll; */
-    /* padding: 0 10px; */
-}
 
-.scroll{
-    /* overflow-y: scroll; */
-    /* border: red 2px solid;  */
-    /* margin-top: -5rem; */
-}
 .scroll::-webkit-scrollbar {
     display: none;
   }
