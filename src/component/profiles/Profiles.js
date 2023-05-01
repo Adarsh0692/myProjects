@@ -1,9 +1,9 @@
 import React from 'react'
 import Posts from './Posts'
-import data from './../../data/userFake_DATA .json'
+// import data from './../../data/userFake_DATA .json'
 
 
-export default function Profiles() {
+export default function Profiles({tweets}) {
     
 
 
@@ -11,7 +11,7 @@ export default function Profiles() {
         <div>
             
             {
-                data.map((user, index) => {
+                tweets.map((user, index) => {
                     return (
                         <Posts key={index} 
                          index={index}
@@ -25,6 +25,9 @@ export default function Profiles() {
                          share={user.share}
                          isLike={user.islike}
                          views={user.views}
+                         userId={user.id}
+                         user={user}
+                         
                          />
                     )
                 })

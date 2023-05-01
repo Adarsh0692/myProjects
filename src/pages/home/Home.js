@@ -3,7 +3,7 @@ import style from "./Home.module.css";
 // import Footer from '../footer/Footer';
 import { useNavigate } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import Input from "@mui/material/Input";
+import { Input } from "@mui/material";
 import PhotoSizeSelectActualIcon from "@mui/icons-material/PhotoSizeSelectActual";
 import GifBoxIcon from "@mui/icons-material/GifBox";
 import BallotIcon from "@mui/icons-material/Ballot";
@@ -22,8 +22,26 @@ import data from '../../data/userFake_DATA .json'
 
 export default function Home() {
   const [isTweet, setIsTweet] = useState(true);
-  const [tweet, setTweet] = useState()
-  // const [tweets, setTweets] = useState(data)
+  const [tweet, setTweet] = useState(
+    {
+      "id": 1,
+      "name": "adarsh@gmail.com",
+      "time": "8:08 AM",
+      "email": "fimpey0@so-net.ne.jp",
+      "content": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+      "comments": 86,
+      "shareCount": 158,
+      "likeCount": 260,
+      "views": 535,
+      "retweet": 163,
+      "islike": false,
+      "isfollow": false,
+      "Image": "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    }
+  )
+  const [tweets, setTweets] = useState(data)
+
+  
  
   const navigate = useNavigate();
   const inputref = useRef(null);
@@ -38,11 +56,20 @@ export default function Home() {
   }, [userName]);
 
   function handleTweetInput(e){
-    setTweet(e.target.value)
+    setTweet({...tweet,
+      [e.target.name]: e.target.value,
+      
+    })
   }
 
   function handleTweetBtn(){
-
+    // if(tweet.trim() !== ''){
+    //   setTweet([tweet, ...tweets])
+    // }
+    const newDatas = [tweet,...tweets]
+        console.log(tweets.length)
+        setTweets(newDatas)
+        setTweet('')
   }
 
   return (
@@ -91,7 +118,8 @@ export default function Home() {
             <div className={style.commentText}>
               <Input
               onChange={handleTweetInput}
-              value={tweet}
+              // value={tweet}
+              name="content"
                 sx={{
                   width: "100%",
                   fontSize: "1.5rem",
@@ -99,6 +127,8 @@ export default function Home() {
                 placeholder="What's happening?"
 
               />
+
+            
               
 
               <input type="file" ref={inputref} hidden />
@@ -176,7 +206,7 @@ export default function Home() {
           </div>
           <div className={style.profile_div}>
 
-            {isTweet ? <Profiles /> : <UserFollowData />}
+            {isTweet ? <Profiles tweets={tweets} /> : <UserFollowData />}
 
            
           </div>

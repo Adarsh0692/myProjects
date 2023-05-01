@@ -13,6 +13,7 @@ import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import MoreHorizSharpIcon from "@mui/icons-material/MoreHorizSharp";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
+// import data from '../../data/userFake_DATA .json'
 
 const Posts = ({
   content,
@@ -26,9 +27,13 @@ const Posts = ({
   isLike,
   share,
   views,
+  user,
+  userId,
+  handleDlete
 }) => {
   const [like, setLike] = useState(isLike);
   const [likesCount, setLikeCount] = useState(likeCount);
+  // const [deleteTweet, setDeleteTweet] = useState([user])
 
   function handleLike() {
     setLike(!like);
@@ -38,6 +43,10 @@ const Posts = ({
       setLikeCount(likesCount - 1);
     }
   }
+
+  
+
+  
 
   return (
     <div className="postss">
@@ -56,78 +65,67 @@ const Posts = ({
             <GoVerified className="verify" /> {email} <span>{time}</span>
           </div>
 
-
           {/* <Tooltip title="More">
             <span className="more"> 
               <MoreHorizSharpIcon />
             </span>
           </Tooltip> */}
-<span className="more"> 
+          <span className="more">
+            <PopupState variant="popover" popupId="demo-popup-popover">
+              {(popupState) => (
+                <div>
+                  <div {...bindTrigger(popupState)}>
+                    <Tooltip title="More">
+                      <MoreHorizSharpIcon />
+                    </Tooltip>
+                  </div>
 
-<PopupState variant="popover" popupId="demo-popup-popover">
-                      {(popupState) => (
-                        <div>
-                          <div
-                            
-                            {...bindTrigger(popupState)}
-                          >
-                            <Tooltip title="More">
-            
-              <MoreHorizSharpIcon />
-            
-          </Tooltip>
-                            
-                          </div>
-
-                          <Popover
-                            {...bindPopover(popupState)}
-                            anchorOrigin={{
-                              vertical: "bottom",
-                              horizontal: "left",
-                            }}
-                            transformOrigin={{
-                              vertical: "center",
-                              horizontal: "right",
-                            }}
-                          >
-                            <Typography
-                              sx={{
-                                p: 1,
-                                cursor: "pointer",
-                                ":hover": { background: "#f5f4f2" },
-                              }}
-                            >
-                              <span  >
-                                {" "}
-                                <SentimentVeryDissatisfiedIcon
-                                  sx={{ fontSize: "17px" }}
-                                />{" "}
-                                Not interested in this
-                              </span>
-                            </Typography>
-                            <Typography
-                              sx={{
-                                p: 1,
-                                cursor: "pointer",
-                                ":hover": { background: "#f5f4f2" },
-                              }}
-                            >
-                              <span >
-                                {" "}
-                                <SentimentVeryDissatisfiedIcon
-                                  sx={{ fontSize: "17px" }}
-                                />{" "}
-                                This trend is harmful or spammy
-                              </span>
-                            </Typography>
-                          </Popover>
-                        </div>
-                      )}
-                    </PopupState>
-
-                    </span>
-
-
+                  <Popover
+                    {...bindPopover(popupState)}
+                    anchorOrigin={{
+                      vertical: "bottom",
+                      horizontal: "left",
+                    }}
+                    transformOrigin={{
+                      vertical: "center",
+                      horizontal: "right",
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        p: 1,
+                        cursor: "pointer",
+                        ":hover": { background: "#f5f4f2" },
+                      }}
+                    >
+                      <span >
+                        {" "}
+                        <SentimentVeryDissatisfiedIcon
+                          sx={{ fontSize: "17px" }}
+                        />{" "}
+                        Not interested in this
+                      </span>
+                    </Typography>
+                    <Typography
+                      sx={{
+                        p: 1,
+                        cursor: "pointer",
+                        ":hover": { background: "#f5f4f2" },
+                      }}
+                    >
+                      <span>
+                        {" "}
+                        <SentimentVeryDissatisfiedIcon
+                          sx={{ fontSize: "17px" }}
+                        />{" "}
+                        This trend is harmful or spammy
+                      </span>
+                    </Typography>
+                  </Popover>
+                </div>
+              )}
+            </PopupState>
+          </span>
         </div>
       </div>
       <div className="postss__details">
@@ -135,14 +133,14 @@ const Posts = ({
         <div className="postss__details__img">
           <img
             onDoubleClick={handleLike}
-            src={`https://picsum.photos/1000/500?q=${retweet}`}
+            src={`https://picsum.photos/1000/500?q=${index}`}
             alt="post"
           />
         </div>
         <div className="reactions">
           <span className="comment">
             <Tooltip title="Reply">
-              <ModeCommentOutlinedIcon sx={{fontSize:'18px'}} />
+              <ModeCommentOutlinedIcon sx={{ fontSize: "18px" }} />
             </Tooltip>{" "}
             {commentCount}
           </span>
@@ -152,7 +150,10 @@ const Posts = ({
               <div>
                 <span className="retweet">
                   <Tooltip title="Retweet">
-                    <RepeatIcon {...bindTrigger(popupState)} sx={{fontSize:'18px'}}/>
+                    <RepeatIcon
+                      {...bindTrigger(popupState)}
+                      sx={{ fontSize: "18px" }}
+                    />
                   </Tooltip>{" "}
                   {retweet}
                 </span>
@@ -202,7 +203,7 @@ const Posts = ({
           <span className="like" onClick={handleLike}>
             {like ? (
               <Tooltip title="Like">
-                <FavoriteBorderIcon sx={{fontSize:'18px'}}/>
+                <FavoriteBorderIcon sx={{ fontSize: "18px" }} />
               </Tooltip>
             ) : (
               <Tooltip title="Unlike">
@@ -213,13 +214,13 @@ const Posts = ({
           </span>
           <span className="views">
             <Tooltip title="View">
-              <EqualizerSharpIcon sx={{fontSize:'18px'}}/>
+              <EqualizerSharpIcon sx={{ fontSize: "18px" }} />
             </Tooltip>{" "}
             {views}
           </span>
           <span className="share">
             <Tooltip title="share">
-              <IosShareIcon sx={{fontSize:'18px'}}/>
+              <IosShareIcon sx={{ fontSize: "18px" }} />
             </Tooltip>
           </span>
         </div>
