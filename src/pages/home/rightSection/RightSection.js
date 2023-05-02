@@ -83,22 +83,53 @@ export default function RightSection() {
         "https://i0.wp.com/wikibiostars.in/wp-content/uploads/2022/12/Dumi-Mkokstad.jpg",
     },
   ];
-
+ 
+  const [showMore, setShowMore] = useState(true)
   const [follow1, setFollow] = useState(true);
   const [follow2, setFollow2] = useState(true);
   const [follow3, setFollow3] = useState(true);
   const [follow4, setFollow4] = useState(true);
-  const [list, setList] = useState(happeningData);
-  const [showMore, setShowMore] = useState(false)
+  const [filteredData, setfilteredData] = useState([])
+  const [list, setList] = useState( happeningData.slice(0,4));
+ 
+
+  function handleShowMore(){
+    if(list){
+      setList(happeningData)
+      setShowMore(!showMore)
+    }
+  }
+  function handleShowLess(){
+    if(list){
+      setList(happeningData.slice(0,4))
+      setShowMore(!showMore)
+    }
+  }
 
   function handleClcik() {
     setFollow(!follow1);
   }
 
+
   function handleNotInterested(user){
      const deleted = list.filter(ele => user !== ele)
      setList(deleted)
   }
+
+  function handleFilter(e){
+    const searchName = (e.target.value)
+    const filteredName = happeningData.find((value) => value.name.toLowerCase().includes(searchName.toLowerCase()))
+    
+    if(searchName === ''){
+      setfilteredData([])
+      // console.log('NA');
+    }else{
+      // setfilteredData(filteredName.name)
+      // console.log((filteredName));
+    }
+
+  }
+ 
   
 
   return (
@@ -107,9 +138,22 @@ export default function RightSection() {
       <div className={style.fixe}>
         <div className={style.search_bar}>
           <SearchIcon />
-          <input type="text" placeholder="Search twitter" />
+          <input type="text" placeholder="Search twitter" onChange={handleFilter} />
         </div>
       </div>
+
+      {/* {filteredData.length !==0 && (
+      <div className={style.filterData}>
+          {
+            filteredData.map((item, index) => {
+              return (
+                <div>{item}</div>
+              )
+            })
+          }
+      </div>
+      
+      )} */}
       
         <div className={style.happen}>
           <div className={style.head}>
@@ -117,7 +161,7 @@ export default function RightSection() {
           </div>
 
           <div className={style.box}>
-            {list.slice(0,4).map((user, index) => {
+            {list.map((user, index) => {
               return (
                 <div key={index} className={style.mapBox}>
                   <div>
@@ -195,8 +239,9 @@ export default function RightSection() {
               );
             })}
           </div>
-          <div className={style.showmore}>
-            <Link underline="none">show more</Link>
+          <div className={style.showmore} >
+            {showMore? <Link onClick={handleShowMore} underline="none">show more</Link> : <Link onClick={handleShowLess} underline="none">show less</Link>}
+            
           </div>
         </div>
 

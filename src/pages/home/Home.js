@@ -34,22 +34,7 @@ export default function Home() {
   const [image, setImage] = useState("");
   
   const [tweet, setTweet] = useState(
-    {
-      "id": Date.now(),
-      "name": '' ,
-      "time": dateTime,
-      "email": '',
-      "content": "",
-      "comments": Math.floor(Math.random() * 900) + 100,
-      "shareCount": Math.floor(Math.random() * 900) + 100,
-      "likeCount": Math.floor(Math.random() * 900) + 100,
-      "views": Math.floor(Math.random() * 900) + 100,
-      "retweet": Math.floor(Math.random() * 900) + 100,
-      "islike": false,
-      "isfollow": false,
-      "Image": image,
-      // "emoji" : selectedEmoji
-    }
+    
   )
   const [tweets, setTweets] = useState(data.slice(0,30))
 
@@ -87,6 +72,23 @@ export default function Home() {
   }
 
   function handleTweetBtn(){
+    const tweetData = {
+      "id": Date.now(),
+      "name": '' ,
+      "time": dateTime,
+      "email": '',
+      "content": "",
+      "comments": Math.floor(Math.random() * 900) + 100,
+      "shareCount": Math.floor(Math.random() * 900) + 100,
+      "likeCount": Math.floor(Math.random() * 900) + 100,
+      "views": Math.floor(Math.random() * 900) + 100,
+      "retweet": Math.floor(Math.random() * 900) + 100,
+      "islike": false,
+      "isfollow": false,
+      "Image": image,
+      
+    }
+
    
     const newDatas = [tweet,...tweets]
         // console.log(tweets.length)

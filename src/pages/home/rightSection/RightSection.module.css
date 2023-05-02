@@ -175,3 +175,14 @@
     /* border: red 2px solid; */
     margin-left: 2rem;
 }
+.filterData{
+    margin-top: 10px;
+    height: 50vh;
+    /* border: red 2px solid; */
+    z-index: 99;
+    position: fixed;
+    width: 23vw;
+    background-color: white;
+    border-radius: 10px;
+    padding: 1rem;
+}
