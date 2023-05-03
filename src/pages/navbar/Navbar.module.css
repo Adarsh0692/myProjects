@@ -5,7 +5,7 @@
     height: 4.5em;
     background-color: rgb(57, 73, 105);
     box-shadow: 2px 2px 10px rgb(198, 186, 186);
-    position: sticky;
+    position: fixed;
     top: 0;
    
     
@@ -107,6 +107,7 @@ li {
         /* margin-top: 3em; */
         /* height: 30vh; */
         width: 100vw;
+        margin-top: 4.6rem;
         
     }
     .mobileLink p{
@@ -116,7 +117,7 @@ li {
     }
 
 }
-@media screen and (min-width: 1020px) { 
+@media screen and (min-width: 720px) { 
 
     .icon{
         display:none

@@ -9,20 +9,21 @@ export default function Navbar() {
   const navigate = useNavigate()
   const [isMobile, setIsMobile] = useState(false)
   const isLogin = localStorage.getItem('logged') 
-  // const userName = JSON.parse(localStorage.getItem('users'))
-  // console.log(userName[0].username)
-  // const isSubscribe = localStorage.getItem('subscribed')
-  // const isLogout = JSON.parse(localStorage.getItem('users')) || []
+
+  const userdetails = JSON.parse(localStorage.getItem('users')) || []
   
   
   function handleLogout() {
-    // const logStatus = isLogout.find(user => user.isActive.login === true)
+    const islogin = userdetails.find(user => user.subscriptionData.isActive === true)
     // console.log((logStatus));
-    
-      
+    if(islogin){
+       islogin.subscriptionData.isActive = false;
+      localStorage.setItem('users', JSON.stringify(userdetails))
       localStorage.removeItem('logged')
       navigate('/login')
-     
+    }else{
+      navigate('/login')
+    }
     
       // logStatus.isActive.login = false
       // localStorage.setItem('users', JSON.stringify(isLogout))
@@ -56,7 +57,7 @@ export default function Navbar() {
         </ul>
       </div>
       <div className={Style.btn_div} >
-        {isLogin ? <button className={Style.btn} onClick={handleLogout}>Logout</button> : <button className={Style.btn} onClick={() => navigate('/login')}>Login</button>}
+        <button className={Style.btn} onClick={handleLogout}>{isLogin ? "Logout" : "Login"}</button>
       </div>
       <div className={Style.menuIcon} >
         {isMobile ? <HiMenuAlt3 onClick={() => setIsMobile(false)} /> : <HiMenu onClick={() => setIsMobile(true)} />}
@@ -73,7 +74,7 @@ export default function Navbar() {
           <Link to='/programs' style={{ textDecoration: 'none' }}><p>Program</p></Link>
           <Link to='/training' style={{ textDecoration: 'none' }}><p>Training</p></Link>
           <Link to='/pricing' style={{ textDecoration: 'none' }}><p>Pricing</p></Link>
-          <Link to='/login' style={{ textDecoration: 'none' }}><p>Login</p></Link>
+          {isLogin? <Link to='/login' style={{ textDecoration: 'none' }}><p onClick={handleLogout}>Logout</p></Link> : <Link to='/login' style={{ textDecoration: 'none' }}><p>Login</p></Link> }
         </div>
       </div>
     </>

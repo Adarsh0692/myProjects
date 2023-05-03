@@ -17,7 +17,7 @@ export default function MyFooter() {
 
                     </div>
                 </div>
-                <div className={Style.table}>
+                <div className={Style.table}> 
 
                     {/* <h1>div 1</h1> */}
                     <span>ACCOUNT</span>

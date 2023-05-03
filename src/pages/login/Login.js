@@ -25,14 +25,14 @@ function LoginPage() {
 
     const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
 
-    const existingUser = storedUsers.find(user => user.email === email && user.password === password);
+    const existingUser = storedUsers.find(user => user.email === email && user.password === password && user.subscriptionData.isActive === false );
     // const isActiveStatus = storedUsers.find(user => user.isActive.login === false)
     
     if (existingUser) {
       const confirmation = window.confirm('Login successfully! Click OK to go to Home page.');
       if (confirmation) {
-        // isActiveStatus.isActive.login = true;
-        // localStorage.setItem('users', JSON.stringify(isActiveStatus))
+        existingUser.subscriptionData.isActive = true;
+        localStorage.setItem('users', JSON.stringify(storedUsers))
         localStorage.setItem('logged', true)
         navigate('/');
       }

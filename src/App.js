@@ -11,7 +11,10 @@ import LoginProtectsRoutes from './private/LoginProtectsRoutes';
 import WeekendPass from './service/subscription/WeekendPass';
 import MonthlyPass from './service/subscription/MonthlyPass';
 import YearlyPass from './service/subscription/YearlyPass';
-// import SubscribeProtectsRoutes from './private/SubscribeProtectsRoutes';
+import WeekendPassProtect from './private/subscription/WeekendPassProtect';
+import MonthlyPassProtect from './private/subscription/MonthlyPassProtect';
+import YearlyPassProtect from './private/subscription/YearlyPassProtect';
+
 
 
 function App() {
@@ -24,14 +27,7 @@ function App() {
       <Route path='/programs' element={<Classes/>} />
       <Route path='/training' element={<Training/>} />
       <Route path='/pricing' element={<Pricing/>} />
-      <Route path='/weekend' element={<WeekendPass/>} />
-      <Route path='/monthly' element={<MonthlyPass/>} />
-      <Route path='/yearly' element={<YearlyPass/>} />
-      
-
-      {/* <Route path='/weekend' element={<SubscribeProtectsRoutes Component={WeekendPass}/>} />
-      <Route path='/monthly' element={<SubscribeProtectsRoutes Component={MonthlyPass}/>} />
-      <Route path='/yearly' element={<SubscribeProtectsRoutes Component={YearlyPass}/>} /> */}
+     
 
       {/* Protecting Routing for Login =>> */}
 
@@ -43,9 +39,17 @@ function App() {
       <Route path='/login' element={<Login/>} />
       </Route>
 
-       
+       <Route path='/weekend' element={<WeekendPassProtect/>}>
+       <Route path='/weekend' element={<WeekendPass/>} />
+       </Route>
 
-       
+       <Route path='/monthly' element={<MonthlyPassProtect/>}>
+       <Route path='/monthly' element={<MonthlyPass/>} />
+       </Route>
+
+       <Route path='/yearly' element={<YearlyPassProtect/>}>
+       <Route path='/yearly' element={<YearlyPass/>} />
+       </Route>
       
     </Routes>
     

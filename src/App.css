@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.weekkendPage{
+    width: 100vw;
+    height: 110vh;
+    background-color: rgb(162, 228, 228);
+    padding: 1rem;
+    text-align: center;
+}
+.weekkendPage h1{
+    color: blueviolet;
+}
+.table{
+    padding: 2rem 3rem;
+}

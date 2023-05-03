@@ -66,13 +66,14 @@ function RegistrationPage() {
     }
 
     const newUser = {
-      isActive, username, email, password,
+       username, email, password,
       // isActive: {
       //   login: false
       // },
       subscriptionData: {
         isSubscribed: false,
-        subscriptionPlan: ''
+        subscriptionPlan: '',
+        isActive: false,
       }
     };
 

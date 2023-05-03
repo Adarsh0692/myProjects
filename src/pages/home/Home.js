@@ -11,6 +11,7 @@ export default function Home() {
   const navigate = useNavigate()
   const isLogin = localStorage.getItem('logged')
   const userDetails = JSON.parse(localStorage.getItem('users')) || []
+  const registerData = userDetails.find((user) => user.username)
   const userIsSubscribed = userDetails.find(user => user.subscriptionData.isSubscribed === false && user.subscriptionData.subscriptionPlan === '')
   // console.log(userIsSubscribed);
   const names = (userIsSubscribed ? 'Subscribe Now' : 'Get Started')
@@ -22,7 +23,12 @@ export default function Home() {
   // const isYearlyPass = userDetails?.subscriptionData?.subscriptionPlan === 'Yearly Pass'
   
   function handleNavClick() {
-    navigate('/registration')
+    if(registerData){
+      navigate('/login')
+    }else{
+      navigate('/registration')
+    }
+    
   }
 
   function handleSubscribe() {
@@ -43,8 +49,11 @@ export default function Home() {
   }
 
   return (
-    <section>
+    <div>
+      <div>
       <Navbar />
+      </div>
+     
 
       <div className={Style.homeImg}>
 
@@ -58,6 +67,6 @@ export default function Home() {
       </div>
 
       <Footer />
-    </section>
+    </div>
   )
 }

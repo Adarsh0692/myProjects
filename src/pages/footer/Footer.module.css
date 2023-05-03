@@ -16,6 +16,7 @@
 .logo{
     width: 20%;
     text-align: center;
+    padding: .5em;
     
 }
 .table{
@@ -27,7 +28,7 @@
     /* justify-content: flex-start; */
     width: 15%;
     padding: 1em;
-    /* margin: .5em; */
+    /* margin: 10px; */
     height: auto;
     
 }
@@ -40,6 +41,7 @@
 .table p{
     color: whitesmoke;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 10px;
 }
 .table span{
     font-size: 15px;
