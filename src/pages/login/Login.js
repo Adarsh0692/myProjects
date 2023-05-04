@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Style from './Login.module.css';
 import { Link, useNavigate } from 'react-router-dom';
-
+import Swal from 'sweetalert2'
 
 
 
@@ -26,18 +26,25 @@ function LoginPage() {
     const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
 
     const existingUser = storedUsers.find(user => user.email === email && user.password === password && user.subscriptionData.isActive === false );
-    // const isActiveStatus = storedUsers.find(user => user.isActive.login === false)
+
     
     if (existingUser) {
-      const confirmation = window.confirm('Login successfully! Click OK to go to Home page.');
+      const confirmation = Swal.fire(
+        'Success!',
+        'You are successfully logged in.'
+      )
       if (confirmation) {
         existingUser.subscriptionData.isActive = true;
         localStorage.setItem('users', JSON.stringify(storedUsers))
         localStorage.setItem('logged', true)
         navigate('/');
       }
-    } else {
+    } 
+    else if(storedUsers.password !== password) {
       setLoginError('Email or Password is incorrect');
+    }else{
+      setLoginError('')
+      return 
     }
   }
 

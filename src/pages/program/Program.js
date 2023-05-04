@@ -28,10 +28,6 @@ const images = [
     url: "https://c4.wallpaperflare.com/wallpaper/810/571/618/the-sky-sport-battle-wallpaper-preview.jpg",
     text: "Karate, (Japanese: “empty hand”) unarmed martial-arts discipline employing kicking, striking, and defensive blocking with arms and legs. Emphasis is on concentrating as much of the body’s power as possible at the point and instant of impact. Striking surfaces include the hands (particularly the knuckles and the outer edge), ball of the foot, heel, forearm, knee, and elbow. All are toughened by practice blows against padded surfaces or wood.",
   },
-  // {
-  //   url: "https://c4.wallpaperflare.com/wallpaper/810/571/618/the-sky-sport-battle-wallpaper-preview.jpg",
-  //   text: "Muay Thai is referred to as “The Art of Eight Limbs”; and using eight points of contact the body mimics weapons of war. The hands become the sword and dagger; the shins and forearms were hardened in training to act as armor against blows, and the elbow to fell opponents like a heavy mace or hammer; the legs and knees became the axe and staff. The body operated as one unit. The knees and elbows constantly searching and testing for an opening while grappling and trying to spin an enemy to the ground for the kill.",
-  // },
   {
     url: "https://wallpaperaccess.com/full/19424.jpg",
     text: "Mixed martial arts (MMA), hybrid combat sport incorporating techniques from boxing, wrestling, judo, jujitsu, karate, Muay Thai (Thai boxing), and other disciplines.",
@@ -42,17 +38,14 @@ const images = [
 ];
 
 const Program = () => {
-  // const [currentImage, setCurrentImage] = useState(images[0]);
+
   const [index, setIndex] = useState(0)
   const length = images.length
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // const currentIndex = images.findIndex((image) => image === currentImage);
-      // const nextIndex = (currentIndex + 1) % images.length;
-      // setCurrentImage(images[nextIndex]);
       setIndex(index < length - 1 ? index + 1 : 0)
-    }, 2000);
+    }, 4000);
     return () => clearInterval(interval);
   }, )
 
@@ -61,7 +54,7 @@ const Program = () => {
     <div >
       <Navbar />
       <div className={Style.container}>
-        {/* <img src={currentImage.url} alt={currentImage.text} /> */}
+        
         <div className={Style.img_div}>
           <img src={images[index].url} alt='hello' />
         </div>

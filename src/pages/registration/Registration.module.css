@@ -17,8 +17,7 @@
     width: 25vw;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    /* max-width: 240px; */
+   
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 10px;
@@ -60,7 +59,7 @@
     cursor: pointer;
     margin-bottom: 20px;
     font-size: 1rem;
-    width: 25.5vw;
+    /* width: 25.5vw; */
 
 }
 
@@ -98,7 +97,7 @@ button:active {
     .data button {
         font-size: 1rem;
         padding: 8px 16px;
-        width: 40vw;
+        /* width: 40vw; */
     }
 
     .data span {
@@ -130,13 +129,13 @@ button:active {
 
     .data input {
         font-size: 1rem;
-        padding: 12px;
+        padding: 10px;
         margin-bottom: 10px;
     }
 
     .data button {
         font-size: 1rem;
-        width: 65vw;
+        width: 57vw;
         padding: 8px 12px;
     }
 

@@ -13,14 +13,15 @@ export default function Home() {
   const userDetails = JSON.parse(localStorage.getItem('users')) || []
   const registerData = userDetails.find((user) => user.username)
   const userIsSubscribed = userDetails.find(user => user.subscriptionData.isSubscribed === false && user.subscriptionData.subscriptionPlan === '')
-  // console.log(userIsSubscribed);
-  const names = (userIsSubscribed ? 'Subscribe Now' : 'Get Started')
+
+  
   const isWeekenPass = userDetails.find(user => user.subscriptionData.isSubscribed === true && user.subscriptionData.subscriptionPlan === 'Weekend Pass')
-  // const isWeekenPass = userDetails?.subscriptionData?.subscriptionPlan === 'Weekend Pass'
+
   const isMonthlyPass = userDetails.find(user => user.subscriptionData.isSubscribed === true && user.subscriptionData.subscriptionPlan === 'Monthly Pass')
-  // const isMonthlyPass = userDetails?.subscriptionData?.subscriptionPlan === 'Monthly Pass' 
+
   const isYearlyPass = userDetails.find(user => user.subscriptionData.isSubscribed === true && user.subscriptionData.subscriptionPlan === 'Yearly Pass')
-  // const isYearlyPass = userDetails?.subscriptionData?.subscriptionPlan === 'Yearly Pass'
+
+  const names = (userIsSubscribed ? 'Subscribe Now' : 'Get Started')
   
   function handleNavClick() {
     if(registerData){

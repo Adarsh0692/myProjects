@@ -29,7 +29,7 @@ function App() {
       <Route path='/pricing' element={<Pricing/>} />
      
 
-      {/* Protecting Routing for Login =>> */}
+      {/* Protecting Routing  =>> */}
 
       <Route path='/registration' element={<LoginProtectsRoutes/>}>
       <Route path='/registration' element={<Registation/>} />

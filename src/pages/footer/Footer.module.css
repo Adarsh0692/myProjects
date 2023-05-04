@@ -1,9 +1,9 @@
 .main_div{
     display: flex;
     justify-content: space-around;
-    /* border: 2px red solid; */
     width: 100%;
-    height: 40vh;
+    /* height: 40vh; */
+    padding: 1rem 0;
     
    
 }
@@ -16,19 +16,14 @@
 .logo{
     width: 20%;
     text-align: center;
-    padding: .5em;
+  
     
 }
 .table{
-    /* border: 2px red solid; */
-    text-align: center;
+ 
     display: flex;
     flex-direction: column;
-    /* align-items: flex-start; */
-    /* justify-content: flex-start; */
     width: 15%;
-    padding: 1em;
-    /* margin: 10px; */
     height: auto;
     
 }
@@ -56,9 +51,7 @@
     margin-left: 25px;
     cursor: pointer;
 }
-/* .insta{
-    color: #c32aa3;
-} */
+
 
 .copy {
     text-align: center;

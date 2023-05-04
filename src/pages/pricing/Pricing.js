@@ -3,6 +3,7 @@ import Style from "./Pricing.module.css";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 
 export default function Pricing() {
@@ -10,7 +11,7 @@ export default function Pricing() {
   const navigate = useNavigate();
   const isLogin = localStorage.getItem("logged");
   const userData = JSON.parse(localStorage.getItem("users")) || [];
-
+  const name = userData.find(user => user.subscriptionData.isActive === true )
 
 
   function handleSubsriptionW() {
@@ -29,10 +30,17 @@ export default function Pricing() {
           userDetails.subscriptionData.isSubscribed = true;
           userDetails.subscriptionData.subscriptionPlan = "Weekend Pass";
           localStorage.setItem("users", JSON.stringify(userData));
-          alert("Congratulation! You have subscribed our Weekend pass ");
+          Swal.fire(
+            'Congratulations!',
+            'You have subscribed our Weekend pass.'
+          )
+          
         }
       } else {
-        alert("You have already Subscribed");
+        Swal.fire(
+          `Dear ${name.username}`,
+          `You have already Subscribed our ${name.subscriptionData.subscriptionPlan}.`
+          )
       }
     }
      else {
@@ -54,10 +62,16 @@ export default function Pricing() {
           userDetails.subscriptionData.isSubscribed = true;
           userDetails.subscriptionData.subscriptionPlan = "Monthly Pass";
           localStorage.setItem("users", JSON.stringify(userData));
-          alert("Congratulation! You have subscribed our Monthly pass ");
+          Swal.fire(
+            'Congratulations!',
+            'You have subscribed our Monthly pass.'
+          )
         }
       } else {
-        alert("You have already Subscribed");
+        Swal.fire(
+          `Dear ${name.username}`,
+          `You have already Subscribed our ${name.subscriptionData.subscriptionPlan}.`
+          )
       }
     } else {
       navigate("/login");
@@ -79,10 +93,16 @@ export default function Pricing() {
           userDetails.subscriptionData.isSubscribed = true;
           userDetails.subscriptionData.subscriptionPlan = "Yearly Pass";
           localStorage.setItem("users", JSON.stringify(userData));
-          alert("Congratulation! You have subscribed our Yearly pass ");
+          Swal.fire(
+            'Congratulations!',
+            'You have subscribed our yearly pass.'
+          )
         }
       } else {
-        alert("You have already Subscribed");
+        Swal.fire(
+          `Dear ${name.username}`,
+          `You have already Subscribed our ${name.subscriptionData.subscriptionPlan}.`
+          )
       }
     } else {
       navigate("/login");

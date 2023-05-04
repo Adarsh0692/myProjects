@@ -1,3 +1,7 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 .main_div{
   text-align: center;
   background-image: url("https://media.istockphoto.com/id/875207140/photo/sport-background-with-fitness-equipment-in-gym-gym.jpg?s=612x612&w=0&k=20&c=VEpZIAJ3wdlwHwvWuLumDmpsWczobiSH5kL981H5Cvk=");
@@ -13,6 +17,7 @@
 }
 .content{
     padding: 2em;
+    /* padding-top: 4rem; */
 }
 .content h1 {
     color: whitesmoke;
@@ -117,6 +122,7 @@
         align-items: center;
        
     }
+    
     .div_3, .div_2, .div_1{
         
         width: 70%;
