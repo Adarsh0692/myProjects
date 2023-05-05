@@ -81,6 +81,7 @@
 .postss__first {
   display: flex;
   align-items: center;
+  justify-content: space-around;
   /* border: red 1px solid; */
 }
 .posts__first__img {
@@ -95,14 +96,14 @@
   height: 100%;
 }
 .posts__first__name {
-  margin-left: 1px;
+  /* margin-left: 1px; */
   /* border: red 1px solid; */
   width: auto;
-  padding: 0 10px;
+  /* padding: 0 10px; */
   font-size: 13px;
 }
 .posts__first__username {
-  margin-right: -4rem;
+  /* margin-right: -4rem; */
   font-family: inherit;
   /* color: silver; */
   color: rgb(83, 100, 113);

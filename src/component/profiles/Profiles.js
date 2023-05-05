@@ -3,7 +3,7 @@ import Posts from './Posts'
 // import data from './../../data/userFake_DATA .json'
 
 
-export default function Profiles({tweets}) {
+export default function Profiles({tweets,handleDeleteTweet}) {
     
 
 
@@ -27,6 +27,9 @@ export default function Profiles({tweets}) {
                          views={user.views}
                          userId={user.id}
                          user={user}
+                         image={user.image}
+                         userImage= {user.userImage}
+                         handleDeleteTweet={handleDeleteTweet}
                          
                          />
                     )

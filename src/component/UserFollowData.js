@@ -23,6 +23,8 @@ export default function UserFollowData() {
                 share={user.share}
                 isLike={user.islike}
                 views={user.views}
+                image={user.image}
+                userImage={user.userImage}
                 />
             )
         })

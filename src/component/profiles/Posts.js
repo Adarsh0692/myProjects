@@ -29,11 +29,13 @@ const Posts = ({
   views,
   user,
   userId,
-  handleDlete
+  image,
+  userImage,
+  handleDeleteTweet
 }) => {
   const [like, setLike] = useState(true);
   const [likesCount, setLikeCount] = useState(likeCount);
-  // const [deleteTweet, setDeleteTweet] = useState([user])
+  
 
   function handleLike() {
     setLike(!like);
@@ -46,14 +48,12 @@ const Posts = ({
 
   
 
-  
-
   return (
     <div className="postss">
       <div className="postss__first">
         <div className="posts__first__img">
           <img
-            src={`https://picsum.photos/1000/500?q=${views}`}
+            src={userImage}
             alt="profile img"
           />
         </div>
@@ -94,7 +94,7 @@ const Posts = ({
                         ":hover": { background: "#f5f4f2" },
                       }}
                     >
-                      <span >
+                      <span onClick={()=>handleDeleteTweet(userId)}>
                         {" "}
                         <SentimentVeryDissatisfiedIcon
                           sx={{ fontSize: "17px" }}
@@ -127,11 +127,11 @@ const Posts = ({
       <div className="postss__details">
         <div className="postss__details__msg">{content}</div>
         <div className="postss__details__img">
-          <img
+          { image && <img
             onDoubleClick={handleLike}
-            src={`https://picsum.photos/1000/500?q=${index}`}
+            src={image}
             alt="post"
-          />
+          />}
         </div>
         <div className="reactions">
           <span className="comment">
@@ -206,7 +206,7 @@ const Posts = ({
                 <FavoriteIcon sx={{ color: "red" }} />
               </Tooltip>
             )}{" "}
-            {likesCount}
+            {likeCount}
           </span>
           <span className="views">
             <Tooltip title="View">

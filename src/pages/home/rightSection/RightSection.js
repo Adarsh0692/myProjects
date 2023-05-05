@@ -124,8 +124,8 @@ export default function RightSection() {
       setfilteredData([])
       // console.log('NA');
     }else{
-      // setfilteredData(filteredName.name)
-      // console.log((filteredName));
+      setfilteredData(filteredName.name)
+      console.log((filteredName.name));
     }
 
   }
@@ -138,11 +138,16 @@ export default function RightSection() {
       <div className={style.fixe}>
         <div className={style.search_bar}>
           <SearchIcon />
-          <input type="text" placeholder="Search twitter" onChange={handleFilter} />
+          <input type="text" placeholder="Search twitter" 
+          onChange={handleFilter}
+           />
         </div>
       </div>
+      {/* {
+        happeningData.map((op) => <option>{op.name}</option>)
+      } */}
 
-      {/* {filteredData.length !==0 && (
+      {filteredData.length !==0 && (
       <div className={style.filterData}>
           {
             filteredData.map((item, index) => {
@@ -153,7 +158,7 @@ export default function RightSection() {
           }
       </div>
       
-      )} */}
+      )}
       
         <div className={style.happen}>
           <div className={style.head}>

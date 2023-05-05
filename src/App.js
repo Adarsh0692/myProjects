@@ -1,9 +1,9 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Registration from './pages/singUp/Registration';
+import Home from './pages/home/middleSection/Feed';
 
 function App() {
   return (

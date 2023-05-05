@@ -15,6 +15,11 @@
     
     
 }
+.imageDiv{
+    /* border: red 2px solid; */
+    width: 20vw;
+    /* height: 30vh; */
+}
 .div2{
     /* border: red 2px solid; */
     width: 45%;
@@ -29,11 +34,12 @@
     /* border: red 2px solid; */
     height: 2rem;
     margin:  1rem 0;
+    padding: 0 10px;
     /* z-index: 999;
     background: transparent; */
     font-family: inherit;
     font-size: 1.3rem;
-    font-weight:500;
+    font-weight:700;
 }
 .insideHome{
     /* border: red 2px solid; */
@@ -76,18 +82,54 @@
 .textHeader{
    display: flex;
    /* border: red 2px solid; */
-   height: 8rem;
+   height: auto;
    padding:  0 10px;
    border: 1px solid #eee;
    /* margin-top: 5rem; */
 
 }
+.twwetBox__input{
+    padding: 10px 0;
+    display: flex;
+    /* border: red 2px solid; */
+}
+.twwetBox__input>textarea{
+    flex: 1;
+    /* margin-left: 20px; */
+    font-size: 20px;
+    border: none;
+    outline: none;
+    resize: none;
+}
+textarea::-webkit-scrollbar{
+    display: none;
+}
 .commentText textarea{
     resize: none;
     border: none;
     border-style: none;
-    font-weight: 300;
-    /* font-size: 10px; */
+    /* font-weight: 100; */
+    font-family: Arial, Helvetica, sans-serif;
+}
+.cancel__btn{
+    font-size: 1rem;
+    /* color: #fff; */
+    cursor: pointer;
+    
+}
+.cancel__btn:hover{
+    background-color:gainsboro;
+}
+.globalIcon{
+    color:#1d9bf0;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    /* margin-left: 25px; */
+    margin-bottom: .5rem;
 }
 .profileSec{
     /* border: red 2px solid; */
@@ -97,6 +139,7 @@
     /* border: red 2px solid; */
     width: 90%;
     padding: o 20px;
+    
 }
 .commentText input{
     width: 95%;
@@ -128,7 +171,7 @@
   .hrline{
     border:  #1DA1F2 3px solid;
     border-radius: 3px;
-   margin-left: 7rem;
+   margin-left: 8rem;
    margin-top: 1rem;
     width: 4vw;
   }

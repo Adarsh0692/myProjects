@@ -9,6 +9,7 @@ import {FcGoogle} from 'react-icons/fc'
 import AppleIcon from '@mui/icons-material/Apple';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import CloseIcon from '@mui/icons-material/Close';
+import data from '../../data/userFake_DATA .json'
 // import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 // import Snackbar from '@mui/material/Snackbar';
 // import Alert from '@mui/material/Alert';
@@ -16,6 +17,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 
 export default function Registration() {
+ 
   const [hide, setHide] = useState(false)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -77,14 +79,19 @@ export default function Registration() {
       setRegistrationError('Username or email already exists');
       return;
     }
-
+  //   const generateUserImage = async () => {
+  //     const response = await axios.get("https://randomuser.me/api/");
+  //     const imageUrl = response.data.results[0].picture.large;
+  //     return imageUrl
+  // }
 
 
     const userData = {
-      name, email, password, phone,
+      name, email, password, phone, 
       active: {
         isActive: false
-      }
+      },
+      // data,
 
     }
     const updatedUser = [...storeduser, userData]
@@ -99,6 +106,7 @@ export default function Registration() {
       const confirmation = window.confirm(`Dear ${name} Registration successfully Done! Click OK to go to Login page.`);
         if (confirmation) {
           localStorage.setItem('userData', JSON.stringify(updatedUser))
+          localStorage.setItem('data', JSON.stringify(data))
           navigate('/login')
         }
 

@@ -9,7 +9,7 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import { Button } from "@mui/material";
-import style from "./leftSection/SectionOne.module.css";
+import style from "./MenuSection.module.css";
 import Avatar from "@mui/material/Avatar";
 import MoreHorizSharpIcon from "@mui/icons-material/MoreHorizSharp";
 import Popover from "@mui/material/Popover";

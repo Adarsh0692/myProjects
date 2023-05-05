@@ -1,49 +1,47 @@
 import React, { useEffect, useRef, useState } from "react";
-import style from "./Home.module.css";
+import style from "./Feed.module.css";
 // import Footer from '../footer/Footer';
 import { useNavigate } from "react-router-dom";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { Input } from "@mui/material";
+import { RxCross1 } from "react-icons/rx";
+import { FaGlobe} from "react-icons/fa";
 import PhotoSizeSelectActualIcon from "@mui/icons-material/PhotoSizeSelectActual";
 import GifBoxIcon from "@mui/icons-material/GifBox";
 import BallotIcon from "@mui/icons-material/Ballot";
 import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
 import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
 import Button from "@mui/material/Button";
-import Profiles from "../../component/profiles/Profiles";
-import Posts from "../../component/profiles/Posts";
+import Profiles from "../../../component/profiles/Profiles";
+// import Posts from "../../../component/profiles/Posts";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
-import SectionOne from "./leftSection/SectionOne";
-import MenuSection from "./MenuSection";
-import UserFollowData from "../../component/UserFollowData";
-import RightSection from "./rightSection/RightSection";
-import data from '../../data/userFake_DATA .json'
+// import SectionOne from "../leftSection/SectionOne";
+import MenuSection from "../leftSection/MenuSection";
+import UserFollowData from "../../../component/UserFollowData";
+import RightSection from "../rightSection/RightSection";
+// import data from "../../../data/userFake_DATA .json";
 
 export default function Home() {
-  const storeduser = JSON.parse(localStorage.getItem('userData')) || []
+  const storeduser = JSON.parse(localStorage.getItem("userData")) || [];
+  const storedData = JSON.parse(localStorage.getItem("data")) || [];
+
   const userName = storeduser.find((name) => name.active.isActive === true);
-
+  // console.log(storedData);
   var today = new Date();
-  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  var dateTime = date+' '+time;
+  var date =
+    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+  var time =
+    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  var dateTime = date + " " + time;
 
-  const [disabled, setDisabled] = useState(true)
+  const [disabled, setDisabled] = useState(true);
   const [isTweet, setIsTweet] = useState(true);
   const [image, setImage] = useState("");
-  
-  const [tweet, setTweet] = useState(
-    
-  )
-  const [tweets, setTweets] = useState(data.slice(0,30))
 
-  
- 
+  const [tweet, setTweet] = useState("");
+  const [tweets, setTweets] = useState(storedData);
+
   const navigate = useNavigate();
   const inputref = useRef(null);
- 
- 
 
   useEffect(() => {
     if (!userName) {
@@ -51,14 +49,9 @@ export default function Home() {
     }
   }, [userName]);
 
-  function handleTweetInput(e){
-    setTweet({...tweet,
-      [e.target.name]: e.target.value,
-      "name": userName.name ,
-      "email": userName.email,
-    });
-    setDisabled(false)
-
+  function handleTweetInput(e) {
+    setTweet(e.target.value);
+    setDisabled(false);
   }
 
   const handleFileInputChange = (e) => {
@@ -66,42 +59,51 @@ export default function Home() {
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      const selectedImage = reader.result
-      setImage(selectedImage)
-    }
-  }
+      const selectedImage = reader.result;
+      setImage(selectedImage);
+    };
+  };
+  // console.log("image", image);
 
-  function handleTweetBtn(){
+  function handleTweetBtn() {
     const tweetData = {
-      "id": Date.now(),
-      "name": '' ,
-      "time": dateTime,
-      "email": '',
-      "content": "",
-      "comments": Math.floor(Math.random() * 900) + 100,
-      "shareCount": Math.floor(Math.random() * 900) + 100,
-      "likeCount": Math.floor(Math.random() * 900) + 100,
-      "views": Math.floor(Math.random() * 900) + 100,
-      "retweet": Math.floor(Math.random() * 900) + 100,
-      "islike": false,
-      "isfollow": false,
-      "Image": image,
-      
-    }
+      id: Date.now(),
+      name: userName.name,
+      time: dateTime,
+      email: userName.email,
+      content: tweet,
+      comments: 0,
+      shareCount: 0,
+      likeCount: 0,
+      views: 0,
+      retweet: 0,
+      islike: false,
+      isfollow: false,
+      image: image,
+      userImage:
+        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    };
 
+    const newDatas = [tweetData, ...tweets];
+    // console.log(tweets.length)
    
-    const newDatas = [tweet,...tweets]
-        // console.log(tweets.length)
-        setTweets(newDatas)
-        setTweet('')
-        setImage('')
-    
+    // userName.data = newDatas
+   localStorage.setItem("data", JSON.stringify(newDatas))
+    // localStorage.setItem("userData", JSON.stringify(userName));
+    setTweets(newDatas);
+    setTweet("");
+    setImage("");
+  }
+  function handleDeleteTweet(userId) {
+    const deleted = tweets.filter((user) => user.id != userId)
+    setTweets(deleted)
+    localStorage.setItem('data', JSON.stringify(deleted))
+    // console.log(deleted);
   }
 
   return (
     <div className={style.main_div}>
       <div className={style.div1}>
-       
         <MenuSection />
       </div>
 
@@ -110,18 +112,17 @@ export default function Home() {
           <div className={style.transparent}>
             <div className={style.home}>
               <span title="home page">Home </span>
-             
             </div>
             <div className={style.insideHome}>
               <div className={style.foryou} onClick={() => setIsTweet(true)}>
-                <p >For you</p>
+                <p>For you</p>
                 {isTweet ? <hr className={style.hrline} /> : ""}
               </div>
               <div
                 className={style.following}
                 onClick={() => setIsTweet(false)}
               >
-                <p >Follwoing</p>
+                <p>Follwoing</p>
                 {isTweet ? "" : <hr className={style.hrline} />}
               </div>
             </div>
@@ -142,22 +143,43 @@ export default function Home() {
               )}
             </div>
             <div className={style.commentText}>
-              <Input
-              onChange={handleTweetInput}
-              // value={tweet}
-              name="content"
+              {/* <Input
+                onChange={handleTweetInput}
+                value={tweet}
+                name="content"
                 sx={{
                   width: "100%",
                   fontSize: "1rem",
                 }}
                 placeholder="What's happening?"
+              /> */}
+              <div className={style.twwetBox__input}>
 
-              />
-
-            
               
+              <textarea type='text' name="content" value={tweet}  rows='3'  placeholder="What's happening?" onChange={handleTweetInput}></textarea>
+              </div>
+              <div className={style.globalIcon}>
+            <FaGlobe />
+            <span>Everyone can reply</span>
+          </div>
+              <div className={style.imageDiv}>
+                {image && (
+                  <div className="image-container">
+                    <div>
+                      <RxCross1 className={style.cancel__btn} onClick={() => setImage("")} />
+                    </div>
+                    <img src={image} alt="" width="100%" height="100%" />
+                    
+                  </div>
+                )}
+              </div>
 
-              <input type="file" ref={inputref} hidden onChange={handleFileInputChange}/>
+              <input
+                type="file"
+                ref={inputref}
+                hidden
+                onChange={handleFileInputChange}
+              />
 
               <div className={style.texticons}>
                 <div className={style.icons}>
@@ -215,14 +237,14 @@ export default function Home() {
                 </div>
                 <div className={style.Twittebtn}>
                   <Button
-                  onClick={handleTweetBtn}
-                  disabled={disabled}
+                    onClick={handleTweetBtn}
+                    disabled={disabled}
                     variant="contained"
                     sx={{
                       borderRadius: "35px",
                       marginTop: "5px",
                       textTransform: "capitalize",
-                      backgroundColor: 'rgb(29, 155, 240)'
+                      backgroundColor: "rgb(29, 155, 240)",
                     }}
                   >
                     Tweet
@@ -232,16 +254,17 @@ export default function Home() {
             </div>
           </div>
           <div className={style.profile_div}>
-
-            {isTweet ? <Profiles tweets={tweets} /> : <UserFollowData />}
-
-           
+            {isTweet ? (
+              <Profiles tweets={tweets} handleDeleteTweet={handleDeleteTweet} />
+            ) : (
+              <UserFollowData />
+            )}
           </div>
         </div>
       </div>
 
       <div className={style.div3}>
-        <RightSection/>
+        <RightSection />
       </div>
     </div>
   );
