@@ -8,7 +8,7 @@ import AppleIcon from "@mui/icons-material/Apple";
 import { TextField, Button } from "@mui/material";
 import {FcGoogle} from 'react-icons/fc'
 import IconButton from "@mui/material/IconButton";
-
+import Swal from 'sweetalert2'
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -59,14 +59,20 @@ export default function MyLogin() {
   );
   function handleLoginClick() {
     if (validUser) {
-      const confirmation = window.confirm(
-        "Login successfully! Click OK to go to Home page."
-      );
+      const confirmation = Swal.fire(
+        'congratulations!',
+        'You are logged in successfully',
+      )
       if (confirmation) {
         activeUser.active.isActive = true;
         localStorage.setItem("userData", JSON.stringify(userDetails));
         navigate("/");
       }
+    }else{
+      Swal.fire(
+        'Sorry!',
+        "Account does not exist.",
+      )
     }
   }
 

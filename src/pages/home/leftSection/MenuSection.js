@@ -64,6 +64,7 @@ export default function MenuSection() {
   if(userName){
     userName.active.isActive = false
     localStorage.setItem('userData', JSON.stringify(userDetails))
+    localStorage.removeItem('data')
     navigate('/login')
   }
 
@@ -112,11 +113,15 @@ export default function MenuSection() {
 
             <div className={style.userData} {...bindTrigger(popupState)}>
               <div className={style.pimage}>
+              {userName ? (
                 <Avatar
-                  sx={{ width: 45, height: 45 }}
+                  sx={{ width: 50, height: 50 }}
                   alt="Remy Sharp"
-                  src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                  src={userName.userImage}
                 />
+              ) : (
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+              )}
               </div>
               <div className={style.username}>
                 <div>

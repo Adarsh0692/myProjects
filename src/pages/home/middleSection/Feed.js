@@ -76,14 +76,13 @@ export default function Home() {
       content: tweet,
       comments: 0,
       shareCount: 0,
-      likesCount: 0,
+      likeCount: 0,
       views: 0,
       retweet: 0,
       islike: false,
       isfollow: false,
       image: image,
-      userImage:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      userImage: userName.userImage,
     };
 
     const newDatas = [tweetData, ...tweets];
@@ -139,7 +138,7 @@ export default function Home() {
                 <Avatar
                   sx={{ width: 50, height: 50 }}
                   alt="Remy Sharp"
-                  src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                  src={userName.userImage}
                 />
               ) : (
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />

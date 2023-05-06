@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import {Link, useNavigate } from 'react-router-dom';
 import style from './Registration.module.css'
@@ -10,10 +10,12 @@ import AppleIcon from '@mui/icons-material/Apple';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import CloseIcon from '@mui/icons-material/Close';
 import data from '../../data/userFake_DATA .json'
-// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-// import Snackbar from '@mui/material/Snackbar';
-// import Alert from '@mui/material/Alert';
-
+import Avatar from '@mui/joy/Avatar';
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import { RxCross1 } from "react-icons/rx";
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+import Swal from 'sweetalert2'
 
 
 export default function Registration() {
@@ -24,66 +26,131 @@ export default function Registration() {
   const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
   const [registrationError, setRegistrationError] = useState('');
-  
+  const [userImage, setUserImage] =useState('')
+  const imageRef = useRef(null)
 
-  const [EM, setEM] = useState(false);
-  const [PW, setPW] = useState(false);
-  const [Ph, setPh] = useState(false);
-
+  const [EM, setEM] = useState('');
+  const [PW, setPW] = useState('');
+  const [Ph, setPh] = useState('');
+  const [UN, setUN] = useState('');
+  const [error, setError] = useState(false)
   const navigate = useNavigate()
 
-  function handleName(e){
-    setName(e.target.value)
-    
+
+  // function handleName(e){
+  //   setName(e.target.value)
+   
+  //   setError(false)
+  
+  // }
+  function validateName(name) {
+    const regex = /^[a-zA-Z][a-zA-Z ]+[a-zA-Z]$/;
+    if (regex.test(name)) {
+      return ""
+    }
+    return "name must contain only alphabets and at-least 3 alphabets are required.";
+  }  
+
+  function handleName(event) {
+    setName(event.target.value)
+    setError(false)
+    setUN(() =>validateName(event.target.value))
   }
+
+  // function handlePhone(event) {
+  //   setPhone(event.target.value);
+  //   setError(false)
+  //   if (phone.length !== 9) {
+  //     setPh(true)
+
+  //   } else{
+  //     setPh('')
+  //   }
+  // }
+  function validatePhone(phone) {
+    const regex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;;
+    if (regex.test(phone)) {
+      return ""
+    }
+    return "Invalid phone number";
+  }  
 
   function handlePhone(event) {
-    setPhone(event.target.value);
-    if (phone.length !== 9) {
-      setPh(true)
-
-    } else{
-      setPh('')
-    }
+    setPhone(event.target.value)
+    setPh(() =>validatePhone(event.target.value))
   }
 
-  function handleEmailChange(event) {
-    setEmail(event.target.value);
-    const regEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    if (regEmail.test(email)) {
-      setEM('');
-    } else if (!regEmail.test(email) && email !== "") {
-      setEM(true);
+  // function handleEmailChange(event) {
+  //   setEmail(event.target.value);
+  //   setError(false)
+  //   const regEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+  //   if (regEmail.test(email)) {
+  //     setEM('');
+  //   } else if (!regEmail.test(email) && email !== "") {
+  //     setEM(true);
+  //   }
+  // }
+  function validateEmail(email){
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i
+    if(!regex.test(email)){
+      return "Invalid email"
     }
-  }
+    return "";
+ }
 
+ function handleEmailChange(event) {
+   setEmail(event.target.value);
+   setEM(() =>validateEmail(event.target.value))
+ }
+
+  // function handlePassword(event) {
+  //   setPassword(event.target.value);
+  //   setError(false)
+  //   const pwRegEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,20}$/;
+  //   if (pwRegEx.test(password)) {
+  //     setPW('');
+  //   } else if (!pwRegEx.test(password) && password !== " ") {
+  //     setPW(true);
+
+  //   } else {
+  //     setPW('');
+  //   }
+  // }
+  function validatePassword(password){
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+    if(!regex.test(password)){
+       return "Password must be min one Capital letter,min one digit & min 8 letter"
+    }
+      return ""
+  }
+  
   function handlePassword(event) {
     setPassword(event.target.value);
-    const pwRegEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,20}$/;
-    if (pwRegEx.test(password)) {
-      setPW('');
-    } else if (!pwRegEx.test(password) && password !== " ") {
-      setPW(true);
+    setPW(() =>validatePassword(event.target.value))
+  }
 
-    } else {
-      setPW('');
-    }
+  function handleUserImage(e){
+    
+    const file = e.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      setUserImage(reader.result);
+    };
   }
 
   function handleSignup() {
     const storeduser = JSON.parse(localStorage.getItem('userData')) || []
 
-    const existingUser = storeduser.find((user) => user.name === name || user.email === email || user.phone === phone)
+    const existingUser = storeduser.find((user) =>  user.email === email || user.phone === phone)
 
     if (existingUser) {
-      setRegistrationError('Username or email already exists');
-      return;
+      Swal.fire(
+        'Opps...',
+        'email or phone already exists',
+      )
     }
-  //   const generateUserImage = async () => {
-  //     const response = await axios.get("https://randomuser.me/api/");
-  //     const imageUrl = response.data.results[0].picture.large;
-  //     return imageUrl
-  // }
+
 
 
     const userData = {
@@ -91,28 +158,39 @@ export default function Registration() {
       active: {
         isActive: false
       },
-      // data,
+      userImage,
 
     }
     const updatedUser = [...storeduser, userData]
 
 
 
-    if (name && phone && email && password) {
+    if (name && phone && email && password ) {
 
-      if (EM === "Email is Not Valid" || PW === "Password must be min one Capital letter,min one digit & min 6 letter" || Ph === "phone number must be 10 digit") {
-        alert('you have enter wrong details')
+      if (EM === "Invalid email" || PW === "Password must be min one Capital letter,min one digit & min 8 letter" || Ph === "Invalid phone number" || UN === "name must contain only alphabets and at-least 3 alphabets are required.") {
+        Swal.fire(
+          'Opps!',
+          'you have entered wrong details',
+        )
       } else {
-      const confirmation = window.confirm(`Dear ${name} Registration successfully Done! Click OK to go to Login page.`);
+      const confirmation =  Swal.fire(
+        'congratulations!',
+        'You are registered successfully.',
+      )
         if (confirmation) {
           localStorage.setItem('userData', JSON.stringify(updatedUser))
-          localStorage.setItem('data', JSON.stringify(data))
+          localStorage.setItem('data', JSON.stringify(data.splice(0,10)))
           navigate('/login')
         }
 
       }
     } else {
-      alert('All fields are mandatory')
+      
+      setError(true)
+      Swal.fire(
+        'Wait...',
+        'All fields are mandatory.',
+      )
     }
 
 
@@ -122,9 +200,9 @@ export default function Registration() {
       <div className={style.form_box}>
 
       <div className={style.header}>
-              <div className={style.cross}>
+              {/* <div className={style.cross}>
                 <p> <CloseIcon onClick={() => navigate(-1)} /> </p>
-              </div>
+              </div> */}
               <div className={style.logo}>
 
                 <span><TwitterIcon sx={{
@@ -176,40 +254,57 @@ export default function Registration() {
             </div>
             <div className={style.textfield} style={{ display: hide ? '' : 'none' }}>
               <h1>Create your account</h1>
+              <div className={style.userPic}>
 
+              
+              <input type="file" hidden ref={imageRef} onChange={handleUserImage} />
+              <Avatar variant="soft" alt="Remy Sharp" src={userImage} size="lg" sx={{ width: 50, height: 50 }}  />
+              <CameraAltIcon onClick={() => imageRef.current.click()}/> 
+              {userImage && (
+                  <div className="image-container">
+                   
+                      <RxCross1 className={style.cancel__btn} onClick={() => setUserImage("")} />
+ 
+                  </div>
+                    )}
+              </div>
               <TextField sx={{ 
                 width: '100%'
-              }} label="Name" variant="outlined" type='text'  value={name}  onChange={handleName} />
+              }} label="Name" variant="outlined" type='text'  value={name}  helperText={UN && <p>{UN}</p>} onChange={handleName} required={true} error={error || UN} />
               <TextField sx={{
                 width: '100%'
-              }} label="Phone" variant="outlined" type='number' error={Ph} helperText={Ph? "phone number must be 10 digit." : ''} value={phone} onChange={handlePhone} /> 
+              }} label="Phone" variant="outlined" type='number'  helperText={Ph && <p>{Ph}</p>}  value={phone} onChange={handlePhone} required={true} error={error || Ph}/> 
               <TextField sx={{
                 width: '100%'
-              }} label="Email" variant="outlined" type='email' error={EM} helperText={EM? "Email is Not Valid." : ''} value={email} onChange={handleEmailChange} /> 
+              }} label="Email" variant="outlined" type='email'  value={email} helperText={EM && <p>{EM}</p>}  onChange={handleEmailChange} required={true} error={error || EM}/> 
               <TextField sx={{
                 width: '100%'
-              }} label="Password" variant="outlined" type='password' error={PW} helperText={PW? "Password must be min one Capital letter,min one digit & min 6 letter." : ''} value={password} onChange={handlePassword} /> 
+              }} label="Password" variant="outlined" type='password' helperText={PW && <p>{PW}</p>}   value={password} onChange={handlePassword} required={true} error={error || PW}/> 
               {/* <div className={style.dob}>
                 <span>Date of birth</span>
                  <p>This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.</p>
                  
       
                   </div> */}
-              <div className={style.signup_btn}>
+              <div >
                 {registrationError && <p>{registrationError}</p>}
+               
+
+                </div>
 
                 {/* <Snackbar autoHideDuration={6000} >
                  <Alert  severity="success" sx={{ width: '100%' }}>
                     This is a success message!
                   </Alert>
                  </Snackbar> */}
-
+                  <div className={style.signup_btn}>
                 <Button sx={{
                   width: '100%',
                   borderRadius: '40px',
                   background: 'black',
                   color: 'white',
-                  overflow: 'none'
+                  overflow: 'none',
+                  height: '40px'
                 }} variant="contained" onClick={handleSignup}>Sign up</Button>
               </div>
 

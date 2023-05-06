@@ -13,7 +13,7 @@ import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import MoreHorizSharpIcon from "@mui/icons-material/MoreHorizSharp";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
-// import data from '../../data/userFake_DATA .json'
+import Avatar from "@mui/material/Avatar";
 
 const Posts = ({
   content,
@@ -49,7 +49,12 @@ const Posts = ({
     <div className="postss">
       <div className="postss__first">
         <div className="posts__first__img">
-          <img src={userImage} alt="profile img" />
+          {/* <img src={userImage} alt="profile img" /> */}
+          <Avatar
+                  sx={{ width: 50, height: 50 }}
+                  alt="Remy Sharp"
+                  src={userImage}
+                />
         </div>
         <div className="user_names">
           <div className="posts__first__name">
