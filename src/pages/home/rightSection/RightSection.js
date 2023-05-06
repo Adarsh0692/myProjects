@@ -117,16 +117,16 @@ export default function RightSection() {
   }
 
   function handleFilter(e){
-    const searchName = (e.target.value)
-    const filteredName = happeningData.find((value) => value.name.toLowerCase().includes(searchName.toLowerCase()))
+    // const searchName = (e.target.value)
+    // const filteredName = happeningData.find((value) => value.name.toLowerCase().includes(searchName.toLowerCase()))
     
-    if(searchName === ''){
-      setfilteredData([])
-      // console.log('NA');
-    }else{
-      setfilteredData(filteredName.name)
-      console.log((filteredName.name));
-    }
+    // if(searchName === ''){
+    //   setfilteredData([])
+    //   // console.log('NA');
+    // }else{
+    //   setfilteredData(filteredName.name)
+    //   console.log((filteredName.name));
+    // }
 
   }
  

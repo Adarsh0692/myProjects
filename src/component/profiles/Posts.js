@@ -31,11 +31,10 @@ const Posts = ({
   userId,
   image,
   userImage,
-  handleDeleteTweet
+  handleDeleteTweet,
 }) => {
   const [like, setLike] = useState(true);
   const [likesCount, setLikeCount] = useState(likeCount);
-  
 
   function handleLike() {
     setLike(!like);
@@ -46,16 +45,11 @@ const Posts = ({
     }
   }
 
-  
-
   return (
     <div className="postss">
       <div className="postss__first">
         <div className="posts__first__img">
-          <img
-            src={userImage}
-            alt="profile img"
-          />
+          <img src={userImage} alt="profile img" />
         </div>
         <div className="user_names">
           <div className="posts__first__name">
@@ -65,7 +59,6 @@ const Posts = ({
             <GoVerified className="verify" /> {email} <span>{time}</span>
           </div>
 
-        
           <span className="more">
             <PopupState variant="popover" popupId="demo-popup-popover">
               {(popupState) => (
@@ -94,7 +87,7 @@ const Posts = ({
                         ":hover": { background: "#f5f4f2" },
                       }}
                     >
-                      <span onClick={()=>handleDeleteTweet(userId)}>
+                      <span onClick={() => handleDeleteTweet(userId)}>
                         {" "}
                         <SentimentVeryDissatisfiedIcon
                           sx={{ fontSize: "17px" }}
@@ -127,11 +120,7 @@ const Posts = ({
       <div className="postss__details">
         <div className="postss__details__msg">{content}</div>
         <div className="postss__details__img">
-          { image && <img
-            onDoubleClick={handleLike}
-            src={image}
-            alt="post"
-          />}
+          {image && <img onDoubleClick={handleLike} src={image} alt="post" />}
         </div>
         <div className="reactions">
           <span className="comment">
@@ -206,7 +195,7 @@ const Posts = ({
                 <FavoriteIcon sx={{ color: "red" }} />
               </Tooltip>
             )}{" "}
-            {likeCount}
+            {likesCount}
           </span>
           <span className="views">
             <Tooltip title="View">

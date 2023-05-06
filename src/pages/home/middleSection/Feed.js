@@ -14,10 +14,12 @@ import Profiles from "../../../component/profiles/Profiles";
 // import Posts from "../../../component/profiles/Posts";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
-// import SectionOne from "../leftSection/SectionOne";
+import Textarea from '@mui/joy/Textarea';
 import MenuSection from "../leftSection/MenuSection";
 import UserFollowData from "../../../component/UserFollowData";
 import RightSection from "../rightSection/RightSection";
+import { TextareaAutosize } from "@mui/base";
+import { FaHome, FaRegBell, FaRegEnvelope, FaSearch } from "react-icons/fa";
 // import data from "../../../data/userFake_DATA .json";
 
 export default function Home() {
@@ -74,7 +76,7 @@ export default function Home() {
       content: tweet,
       comments: 0,
       shareCount: 0,
-      likeCount: 0,
+      likesCount: 0,
       views: 0,
       retweet: 0,
       islike: false,
@@ -102,6 +104,7 @@ export default function Home() {
   }
 
   return (
+    <>
     <div className={style.main_div}>
       <div className={style.div1}>
         <MenuSection />
@@ -153,10 +156,10 @@ export default function Home() {
                 }}
                 placeholder="What's happening?"
               /> */}
-              <div className={style.twwetBox__input}>
+              <div >
 
-              
-              <textarea type='text' name="content" value={tweet}  rows='3'  placeholder="What's happening?" onChange={handleTweetInput}></textarea>
+            <Textarea sx={{focus: "none"}} className={style.twwetBox__input} minRows={2} name="content" value={tweet} placeholder="What's happening?" onChange={handleTweetInput}/>
+              {/* <textarea type='text' name="content" value={tweet}   placeholder="What's happening?" onChange={handleTweetInput}></textarea> */}
               </div>
               <div className={style.globalIcon}>
             <FaGlobe />
@@ -267,5 +270,14 @@ export default function Home() {
         <RightSection />
       </div>
     </div>
+    <div className={style.bottomBar}>
+          <div className={style.bottomBarList}>
+            <FaHome className={style.bottom_icons} />
+            <FaSearch className={style.bottom_icons} />
+            <FaRegBell className={style.bottom_icons} />
+            <FaRegEnvelope className={style.bottom_icons} />
+          </div>
+        </div>
+    </>
   );
 }

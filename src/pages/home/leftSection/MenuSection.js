@@ -85,11 +85,11 @@ export default function MenuSection() {
       {menu.map((item, index) => {
         return (
           <li key={index} className={style.list}>
-            {<item.icon className={style.icons} />} {item.Name}
+            {<item.icon className={style.icons} />} <span>{item.Name}</span>
           </li>
         );
       })}
-      <div>
+      <div className={style.tweetBtn}>
         <Button
           variant="contained"
           sx={{

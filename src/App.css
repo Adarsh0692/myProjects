@@ -5,9 +5,10 @@
   width: 50%;
   margin-left: 25%;
   border-right: 1px solid #e6ecf0;
- 
+  /* border: red 2px solid; */
 }
 .posts__home {
+  
   width: 50%;
   position: fixed;
   top: 0;
@@ -16,6 +17,7 @@
   border-bottom: 1px solid #e6ecf0;
   font-size: 18px;
   background: #fff;
+  /* background: #1da1f2; */
   border-right: 1px solid #e6ecf0;
 }
 .create {
@@ -77,6 +79,10 @@
   padding: 20px;
   border-bottom: 1px solid #e6ecf0;
   border: 1px solid #eee;
+  /* border: red 1px solid; */
+}
+.postss:hover{
+  background-color: #f4f3f3f4;
 }
 .postss__first {
   display: flex;
@@ -142,6 +148,11 @@
   /* border-radius: 10px; */
   margin-top: 6px;
   cursor: pointer;
+}
+.postss__details__msg{
+  font-family: sans-serif;
+  color: #0F1419;
+  
 }
 .postss__details__img img {
   /* border: 2px red solid; */
