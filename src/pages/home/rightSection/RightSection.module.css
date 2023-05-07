@@ -1,11 +1,8 @@
 
 .main_Div{
-    /* border: red 2px solid; */
+  
     height: 90vh;
     padding:  0 1rem;
-    /* width: 100%; */
-    /* padding-right: 3rem; */
-    /* */
 
 }
 .rightSroll{
@@ -31,8 +28,7 @@
 }
 
 .search_bar{
-    /* border: red 2px solid; */
-    /* margin-top: -30px; */
+ 
     border-radius: 30px;
     height: 8vh;
     /* padding: 0 1rem; */
@@ -164,7 +160,7 @@
     height: 5.4vh;
     padding: 5px;
     border-radius: 0 0px 10px 10px;
-    /* position: sticky; */
+ 
     top: 40px;
    
 }

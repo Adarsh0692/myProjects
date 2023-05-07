@@ -62,9 +62,6 @@
 
 @media screen and (max-width: 1050px) {
 
-    /* .heading{
-        font-size: 15px;
-    } */
 .logo{
     margin-left: 2rem;
 }
@@ -88,15 +85,11 @@
     .logo{
         margin-top: -2rem;
         margin-left: 12rem;
-        /* border: 1px red solid; */
-        /* width: 100%; */
         display: none;
     }
     .cross{
         margin-top: -15px;
         margin-left: -3rem;
-        /* border: 1px red solid; */
-        /* width: 50%; */
         display: none;
     }
     .form_box{

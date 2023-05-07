@@ -17,6 +17,8 @@ import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 
+
+
 export default function MenuSection() {
     const navigate = useNavigate()
   const userDetails = JSON.parse(localStorage.getItem("userData")) || [];
@@ -64,7 +66,8 @@ export default function MenuSection() {
   if(userName){
     userName.active.isActive = false
     localStorage.setItem('userData', JSON.stringify(userDetails))
-    localStorage.removeItem('data')
+    // localStorage.removeItem('data')
+    // localStorage.removeItem('followData')
     navigate('/login')
   }
 

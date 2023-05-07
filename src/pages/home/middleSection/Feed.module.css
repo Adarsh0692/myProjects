@@ -2,18 +2,9 @@
     margin: 0;
     padding: 0;
 }
-.main_div{
-    /* border: red 2px solid; */
-    margin-top: 0;
-    display: flex;
-  height: 100vh;
-  /* position: fixed; */
-}
+
 .div1{
-    /* border: red 2px solid; */
     width: 25%;
-    
-    
 }
 .imageDiv{
     /* border: red 2px solid; */
@@ -25,9 +16,14 @@
     width: 45%;
     border: 1px solid #eee;
     border-bottom: none;
+    position: sticky;
+    left: 25%;
 }
 .div3{
     /* border: red 2px solid; */
+    position: fixed;
+    top: 0rem;
+    right: 0;
     width: 30%;
 }
 .home{
@@ -46,7 +42,6 @@
     display: flex;
 }
 .transparent{
-    /* border: red 2px solid;  */
     backdrop-filter: blur(90px);
     position: sticky;
     top: 0;
@@ -58,7 +53,7 @@
     padding: 10px 0;
     font-weight: 500;
     font-family: inherit;
-   height: 2rem;
+    height: 2rem;
    
     cursor: pointer;
     /* border: red 2px solid; */
@@ -109,16 +104,7 @@
     outline: none;
     resize: none;
 }
-/* textarea::-webkit-scrollbar{
-    display: none;
-} */
-/* .commentText textarea{
-    resize: none;
-    border: none;
-    border-style: none;
-   
-    font-family: Arial, Helvetica, sans-serif;
-} */
+
 .cancel__btn{
     font-size: 1rem;
     /* color: #fff; */
@@ -147,6 +133,7 @@
     /* border: red 2px solid; */
     width: 90%;
     padding: o 20px;
+    margin-left: 1rem;
     
 }
 .commentText input{
@@ -179,9 +166,9 @@
   .hrline{
     border:  #1DA1F2 3px solid;
     border-radius: 3px;
-   margin-left: 8rem;
-   margin-top: 1rem;
-    width: 4vw;
+    margin-left: 7.5rem;
+    margin-top: 1rem;
+    width: 6vw;
   }
   .bottomBar{
     display: none;
@@ -189,10 +176,8 @@
 
   @media screen and (max-width:1000px) {
     .div2{
-        width: 75vw;
         border: 1px solid #eee;
         border-bottom: none;
-        left: 25%;
         margin: 0;
     }
     
@@ -201,8 +186,20 @@
     }
     
  }
+ @media screen and (max-width:800px) {
+    .div2{
+      
+        width: 60%;
+     
+    }
+    .hrline{
+        margin-left: 5.5rem;
+        margin-top: 1rem;
+        width: 6vw;
+      }
+ }
 
- @media screen and (max-width:400px) {
+ @media screen and (max-width:450px) {
 
     .div1{
         display:none;
@@ -210,13 +207,13 @@
     .div2{
         border: 1px solid #eee;
         border-bottom: none;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
         left: 5rem;
+        width: 100vw;
         
     }
+    .hrline{
+        width: 8vw;
+      }
     .bottomBar{
         position: fixed;
         bottom: 0;
@@ -242,6 +239,18 @@
         align-items: center;
         width: 100vw;
         align-items: center;
+     }
+
+     .textHeader{
+        display: none;
+     }
+     .transparent{
+        padding-top: 2rem;
+        position:sticky;
+        width: 100%;
+     }
+     .home{
+        display: none;
      }
     
  }

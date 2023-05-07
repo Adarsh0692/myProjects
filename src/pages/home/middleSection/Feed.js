@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import style from "./Feed.module.css";
-// import Footer from '../footer/Footer';
 import { useNavigate } from "react-router-dom";
 import { RxCross1 } from "react-icons/rx";
 import { FaGlobe} from "react-icons/fa";
@@ -11,16 +10,14 @@ import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt
 import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
 import Button from "@mui/material/Button";
 import Profiles from "../../../component/profiles/Profiles";
-// import Posts from "../../../component/profiles/Posts";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import Textarea from '@mui/joy/Textarea';
 import MenuSection from "../leftSection/MenuSection";
 import UserFollowData from "../../../component/UserFollowData";
 import RightSection from "../rightSection/RightSection";
-import { TextareaAutosize } from "@mui/base";
 import { FaHome, FaRegBell, FaRegEnvelope, FaSearch } from "react-icons/fa";
-// import data from "../../../data/userFake_DATA .json";
+
 
 export default function Home() {
   const storeduser = JSON.parse(localStorage.getItem("userData")) || [];
@@ -86,11 +83,8 @@ export default function Home() {
     };
 
     const newDatas = [tweetData, ...tweets];
-    // console.log(tweets.length)
-   
-    // userName.data = newDatas
    localStorage.setItem("data", JSON.stringify(newDatas))
-    // localStorage.setItem("userData", JSON.stringify(userName));
+
     setTweets(newDatas);
     setTweet("");
     setImage("");
@@ -99,7 +93,7 @@ export default function Home() {
     const deleted = tweets.filter((user) => user.id != userId)
     setTweets(deleted)
     localStorage.setItem('data', JSON.stringify(deleted))
-    // console.log(deleted);
+ 
   }
 
   return (
@@ -138,27 +132,18 @@ export default function Home() {
                 <Avatar
                   sx={{ width: 50, height: 50 }}
                   alt="Remy Sharp"
-                  src={userName.userImage}
+                  src= {userName.userImage}
                 />
               ) : (
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
               )}
             </div>
             <div className={style.commentText}>
-              {/* <Input
-                onChange={handleTweetInput}
-                value={tweet}
-                name="content"
-                sx={{
-                  width: "100%",
-                  fontSize: "1rem",
-                }}
-                placeholder="What's happening?"
-              /> */}
+              
               <div >
 
             <Textarea sx={{focus: "none"}} className={style.twwetBox__input} minRows={2} name="content" value={tweet} placeholder="What's happening?" onChange={handleTweetInput}/>
-              {/* <textarea type='text' name="content" value={tweet}   placeholder="What's happening?" onChange={handleTweetInput}></textarea> */}
+             
               </div>
               <div className={style.globalIcon}>
             <FaGlobe />

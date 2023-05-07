@@ -1,6 +1,6 @@
 import React from 'react'
 import Posts from './Posts'
-// import data from './../../data/userFake_DATA .json'
+
 
 
 export default function Profiles({tweets,handleDeleteTweet}) {

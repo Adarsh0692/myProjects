@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import style from "./Login.module.css";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import CloseIcon from "@mui/icons-material/Close";
-import GoogleIcon from "@mui/icons-material/Google";
 import AppleIcon from "@mui/icons-material/Apple";
 import { TextField, Button } from "@mui/material";
 import {FcGoogle} from 'react-icons/fc'
@@ -33,7 +32,7 @@ export default function MyLogin() {
     (user) =>
       user.name === input || user.email === input || user.phone === input
   );
-  //  console.log(user.input);
+ 
   function handleNext() {
     setDisabled(false);
     if (userExist) {

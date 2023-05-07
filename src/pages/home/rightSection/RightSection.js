@@ -11,98 +11,26 @@ import Typography from "@mui/material/Typography";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
 
 export default function RightSection() {
-  const happeningData = [
-    {
-      title: "Trending in India",
-      name: "#SakshiMalik",
-      tweets: "1000 Tweets",
-      Names: "RVCJ ",
-      email: "@RVCJ_",
-      isFollow: true,
-      image:
-        "https://media.licdn.com/dms/image/C4D03AQGbbiS8O7oSeA/profile-displayphoto-shrink_800_800/0/1616177201859?e=2147483647&v=beta&t=ae08hpJ3aBCObsnRj1VRiQVU7xzqJ_DUOJnhfEKRl44",
-    },
-    {
-      title: "Trending in India",
-      name: "#ShareMarket",
-      tweets: "10.1k Tweets",
-      Names: "Ashwani",
-      email: "@ashwani",
-      isFollow: true,
-      image:
-        "https://media.licdn.com/dms/image/D4E03AQElUX_252X3OQ/profile-displayphoto-shrink_800_800/0/1665254295747?e=2147483647&v=beta&t=AN6tZLLbfvjDJ4LfR1G2Bf_myIiEgXfnUiRc9DkoBsM",
-    },
-    {
-      title: "Trending in Sports",
-      name: "#ViratKholi",
-      tweets: "2000 Tweets",
-      Names: "aramco",
-      email: "@aramco",
-      isFollow: true,
-      image:
-        "https://www.ubetoo.com/wp-content/uploads/2020/04/Dumi-Mkokstad-in-support-of-conspiracy-theory-on-the-relation.jpg",
-    },
-    {
-      title: "Trending in Plitics",
-      name: "#Modi",
-      tweets: "10.2k Tweets",
-      Names: "IDFC Bank",
-      email: "@IDFC",
-      isFollow: true,
-      image:
-        "https://i0.wp.com/wikibiostars.in/wp-content/uploads/2022/12/Dumi-Mkokstad.jpg",
-    },
-    {
-      title: "Trending in Bollywood",
-      name: "#AmirKhan",
-      tweets: "3.2k Tweets",
-      Names: "AmirKhan",
-      email: "@amir",
-      isFollow: true,
-      image:
-        "https://i0.wp.com/wikibiostars.in/wp-content/uploads/2022/12/Dumi-Mkokstad.jpg",
-    },
-    {
-      title: "Trending in Bollywood",
-      name: "#salmanKhan",
-      tweets: "1.2k Tweets",
-      Names: "salman",
-      email: "@salman",
-      isFollow: true,
-      image:
-        "https://i0.wp.com/wikibiostars.in/wp-content/uploads/2022/12/Dumi-Mkokstad.jpg",
-    },
-    {
-      title: "Trending in Hollywood",
-      name: "#Priyanka",
-      tweets: "10k Tweets",
-      Names: "Priyanka",
-      email: "@priyanka",
-      isFollow: true,
-      image:
-        "https://i0.wp.com/wikibiostars.in/wp-content/uploads/2022/12/Dumi-Mkokstad.jpg",
-    },
-  ];
- 
-  const [showMore, setShowMore] = useState(true)
+  
+  const happeningData =JSON.parse(localStorage.getItem('followData')) || []
+
+  const [showMore, setShowMore] = useState(true);
   const [follow1, setFollow] = useState(true);
   const [follow2, setFollow2] = useState(true);
   const [follow3, setFollow3] = useState(true);
   const [follow4, setFollow4] = useState(true);
-  const [filteredData, setfilteredData] = useState([])
-  const [list, setList] = useState( happeningData.slice(0,4));
- 
+  const [list, setList] = useState(happeningData.slice(0,4));
 
-  function handleShowMore(){
-    if(list){
-      setList(happeningData)
-      setShowMore(!showMore)
+  function handleShowMore() {
+    if (list) {
+      setList(happeningData);
+      setShowMore(!showMore);
     }
   }
-  function handleShowLess(){
-    if(list){
-      setList(happeningData.slice(0,4))
-      setShowMore(!showMore)
+  function handleShowLess() {
+    if (list) {
+      setList(happeningData.slice(0, 4));
+      setShowMore(!showMore);
     }
   }
 
@@ -110,61 +38,28 @@ export default function RightSection() {
     setFollow(!follow1);
   }
 
-
-  function handleNotInterested(user){
-     const deleted = list.filter(ele => user !== ele)
-     setList(deleted)
+  function handleNotInterested(id) {
+    const deleted = list.filter((ele) => ele.id !== id );
+    localStorage.setItem('followData', JSON.stringify(deleted))
+    // console.log(deleted);
+    setList(deleted);
   }
-
-  function handleFilter(e){
-    // const searchName = (e.target.value)
-    // const filteredName = happeningData.find((value) => value.name.toLowerCase().includes(searchName.toLowerCase()))
-    
-    // if(searchName === ''){
-    //   setfilteredData([])
-    //   // console.log('NA');
-    // }else{
-    //   setfilteredData(filteredName.name)
-    //   console.log((filteredName.name));
-    // }
-
-  }
- 
-  
 
   return (
     <div className={style.main_Div}>
       <div className={style.rightSroll}>
-      <div className={style.fixe}>
-        <div className={style.search_bar}>
-          <SearchIcon />
-          <input type="text" placeholder="Search twitter" 
-          onChange={handleFilter}
-           />
+        <div className={style.fixe}>
+          <div className={style.search_bar}>
+            <SearchIcon />
+            <input type="text" placeholder="Search twitter" />
+          </div>
         </div>
-      </div>
-      {/* {
-        happeningData.map((op) => <option>{op.name}</option>)
-      } */}
 
-      {filteredData.length !==0 && (
-      <div className={style.filterData}>
-          {
-            filteredData.map((item, index) => {
-              return (
-                <div>{item}</div>
-              )
-            })
-          }
-      </div>
-      
-      )}
-      
         <div className={style.happen}>
           <div className={style.head}>
             <span>what's happening</span>
           </div>
-
+       
           <div className={style.box}>
             {list.map((user, index) => {
               return (
@@ -212,7 +107,10 @@ export default function RightSection() {
                                 ":hover": { background: "#f5f4f2" },
                               }}
                             >
-                              <span className={style.popoverName} onClick={()=>handleNotInterested(user)}>
+                              <span
+                                className={style.popoverName}
+                                onClick={() => handleNotInterested(user.id)}
+                              >
                                 {" "}
                                 <SentimentVeryDissatisfiedIcon
                                   sx={{ fontSize: "17px" }}
@@ -244,11 +142,20 @@ export default function RightSection() {
               );
             })}
           </div>
-          <div className={style.showmore} >
-            {showMore? <Link onClick={handleShowMore} underline="none">show more</Link> : <Link onClick={handleShowLess} underline="none">show less</Link>}
-            
+ 
+          <div className={style.showmore}>
+            {showMore ? (
+              <Link onClick={handleShowMore} underline="none">
+                show more
+              </Link>
+            ) : (
+              <Link onClick={handleShowLess} underline="none">
+                show less
+              </Link>
+            )}
           </div>
         </div>
+            
 
         <div className={style.follow}>
           <div className={style.toFollow}>
@@ -256,36 +163,33 @@ export default function RightSection() {
           </div>
           <div className={style.Data}>
             <Data
-              src={happeningData[0].image}
-              name={happeningData[0].Names}
-              email={happeningData[0].email}
+              src="https://i.pravatar.cc/150?img=29"
+              name= "Priyanka"
+              email='@priyanka'
               onClick={handleClcik}
               follow={follow1 ? "Follow" : "following"}
             />
             <Data
-              src={happeningData[1].image}
-              name={happeningData[1].Names}
-              email={happeningData[1].email}
+              src="https://i.pravatar.cc/150?img=21"
+              name="AmirKhan"
+              email='@amir'
               onClick={() => setFollow2(!follow2)}
               follow={follow2 ? "Follow" : "Following"}
             />
             <Data
-              src={happeningData[2].image}
-              name={happeningData[2].Names}
-              email={happeningData[2].email}
+              src="https://i.pravatar.cc/150?img=20"
+              name="salman"
+              email='@salman'
               onClick={() => setFollow3(!follow3)}
               follow={follow3 ? "Follow" : "following"}
             />
             <Data
-              src={happeningData[3].image}
-              name={happeningData[3].Names}
-              email={happeningData[3].email}
+              src="https://i.pravatar.cc/150?img=25"
+              name='Virat'
+              email='@virat'
               onClick={() => setFollow4(!follow4)}
               follow={follow4 ? "Follow" : "Following"}
             />
-            {/* <div className={style.followMore}>
-              <Link underline="none">show more</Link>
-            </div> */}
           </div>
         </div>
       </div>
@@ -305,10 +209,13 @@ function Data({ src, name, email, onClick, follow }) {
       </div>
       <div className={style.followBtn}>
         <Button
-          sx={{ backgroundColor: "black", borderRadius: "20px", textTransform: "capitalize" }}
+          sx={{
+            backgroundColor: "black",
+            borderRadius: "20px",
+            textTransform: "capitalize",
+          }}
           variant="contained"
           onClick={onClick}
-          
         >
           {follow}
         </Button>

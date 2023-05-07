@@ -2,20 +2,17 @@ import React, { useRef, useState } from 'react';
 
 import {Link, useNavigate } from 'react-router-dom';
 import style from './Registration.module.css'
-// import Button from ?'@mui/material/Button';
 import { TextField, Button } from '@mui/material';
-// import GoogleIcon from '@mui/icons-material/Google';
 import {FcGoogle} from 'react-icons/fc'
 import AppleIcon from '@mui/icons-material/Apple';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import CloseIcon from '@mui/icons-material/Close';
+// import CloseIcon from '@mui/icons-material/Close';
 import data from '../../data/userFake_DATA .json'
 import Avatar from '@mui/joy/Avatar';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import { RxCross1 } from "react-icons/rx";
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import userFolllowData from '../../pages/home/rightSection/HappeningData'
 
 
 export default function Registration() {
@@ -25,7 +22,6 @@ export default function Registration() {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
-  const [registrationError, setRegistrationError] = useState('');
   const [userImage, setUserImage] =useState('')
   const imageRef = useRef(null)
 
@@ -36,13 +32,6 @@ export default function Registration() {
   const [error, setError] = useState(false)
   const navigate = useNavigate()
 
-
-  // function handleName(e){
-  //   setName(e.target.value)
-   
-  //   setError(false)
-  
-  // }
   function validateName(name) {
     const regex = /^[a-zA-Z][a-zA-Z ]+[a-zA-Z]$/;
     if (regex.test(name)) {
@@ -57,16 +46,6 @@ export default function Registration() {
     setUN(() =>validateName(event.target.value))
   }
 
-  // function handlePhone(event) {
-  //   setPhone(event.target.value);
-  //   setError(false)
-  //   if (phone.length !== 9) {
-  //     setPh(true)
-
-  //   } else{
-  //     setPh('')
-  //   }
-  // }
   function validatePhone(phone) {
     const regex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;;
     if (regex.test(phone)) {
@@ -80,16 +59,6 @@ export default function Registration() {
     setPh(() =>validatePhone(event.target.value))
   }
 
-  // function handleEmailChange(event) {
-  //   setEmail(event.target.value);
-  //   setError(false)
-  //   const regEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-  //   if (regEmail.test(email)) {
-  //     setEM('');
-  //   } else if (!regEmail.test(email) && email !== "") {
-  //     setEM(true);
-  //   }
-  // }
   function validateEmail(email){
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i
     if(!regex.test(email)){
@@ -103,19 +72,7 @@ export default function Registration() {
    setEM(() =>validateEmail(event.target.value))
  }
 
-  // function handlePassword(event) {
-  //   setPassword(event.target.value);
-  //   setError(false)
-  //   const pwRegEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,20}$/;
-  //   if (pwRegEx.test(password)) {
-  //     setPW('');
-  //   } else if (!pwRegEx.test(password) && password !== " ") {
-  //     setPW(true);
 
-  //   } else {
-  //     setPW('');
-  //   }
-  // }
   function validatePassword(password){
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
     if(!regex.test(password)){
@@ -159,6 +116,7 @@ export default function Registration() {
         isActive: false
       },
       userImage,
+      
 
     }
     const updatedUser = [...storeduser, userData]
@@ -180,6 +138,7 @@ export default function Registration() {
         if (confirmation) {
           localStorage.setItem('userData', JSON.stringify(updatedUser))
           localStorage.setItem('data', JSON.stringify(data.splice(0,10)))
+          localStorage.setItem('followData', JSON.stringify(userFolllowData))
           navigate('/login')
         }
 
@@ -218,12 +177,6 @@ export default function Registration() {
          
 
             <div className={style.create_field} style={{ display: hide ? 'none' : '' }}>
-              {/* <div>
-                <TwitterIcon sx={{color: ' rgb(29, 155, 240)',
-                     fontSize: '40px'}}/>
-              </div> */}
-
-               
 
               <div >
                 <h1>Join Twitter today</h1>
@@ -236,10 +189,6 @@ export default function Registration() {
               {/* <hr /> */}
               <span>or</span>
               </div>
-              
-
-
-
 
               <Button sx={{
                 borderRadius: '40px',
@@ -280,23 +229,14 @@ export default function Registration() {
               <TextField sx={{
                 width: '100%'
               }} label="Password" variant="outlined" type='password' helperText={PW && <p>{PW}</p>}   value={password} onChange={handlePassword} required={true} error={error || PW}/> 
-              {/* <div className={style.dob}>
-                <span>Date of birth</span>
-                 <p>This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.</p>
-                 
-      
-                  </div> */}
+             
               <div >
-                {registrationError && <p>{registrationError}</p>}
+                {/* {registrationError && <p>{registrationError}</p>} */}
                
 
                 </div>
 
-                {/* <Snackbar autoHideDuration={6000} >
-                 <Alert  severity="success" sx={{ width: '100%' }}>
-                    This is a success message!
-                  </Alert>
-                 </Snackbar> */}
+             
                   <div className={style.signup_btn}>
                 <Button sx={{
                   width: '100%',
