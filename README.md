@@ -16,6 +16,8 @@ Created a simple GYM website using ReactJs. In this website user can visit all t
 * https://muscle-club-gym.onrender.com
 
 ## Data Structure 
+
+
 ```json
  
 {
