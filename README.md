@@ -17,7 +17,7 @@ Created a simple GYM website using ReactJs. In this website user can visit all t
 
 ## Data Structure 
 ```json
-userDetails = 
+ 
 {
   userName = "",
   email = "",
