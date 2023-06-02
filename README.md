@@ -5,10 +5,23 @@ Created a simple GYM website using ReactJs. In this website user can visit all t
 # Getting Started
 
 ## Dependencies
-* React router dom
+* react-router-dom
+* react-player
+* react-icons
 
 ## Author
 * Adarsh kushwaha
 
 ## Deployment Link 
 * https://muscle-club-gym.onrender.com
+
+## Data Structure 
+```json
+userDetails = 
+{
+  userName = "",
+  email = "",
+  password = "",
+  
+}
+
