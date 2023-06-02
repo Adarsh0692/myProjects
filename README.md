@@ -19,7 +19,7 @@
 ## Data Structure
 ```json
 
-"userData" =
+"userData":
 {
   "name": " ",
   "email": " ",
@@ -29,4 +29,21 @@
   "active": {
      "isActive": "false"
    }
-}
+},
+
+"tweetData": {
+      "id": "Date.now()",
+      "name": " ",
+      "time": "new Date()",
+      "email": " ",
+      "content": " ",
+      "comments": "0",
+      "shareCount": "0",
+      "likeCount": "0",
+      "views": "0",
+      "retweet": "0",
+      "islike": "false",
+      "isfollow": "false",
+      "image": " ",
+      "userImage": " ",
+    };
