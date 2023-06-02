@@ -21,22 +21,6 @@ Created a simple GYM website using ReactJs. In this website user can visit all t
 ```json
 
 {
-  "KanBan": {
-    "list": [
-      {
-        "id": "nanoId()",
-        "title": "Todo",
-        "task": [
-          {
-            "id": "nanoId()",
-            "title": " ",
-            "listId": " "
-          },
-          {
-            "id": "nanoId()",
-            "title": " ",
-            "listId": " "
-          }
-        ]
-      },
+  userName: ''
+      }
 
