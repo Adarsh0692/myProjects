@@ -11,6 +11,8 @@ Created a simple GYM website using ReactJs. In this website user can visit all t
 
 ## Author
 * Adarsh kushwaha
+* Aditya shaw
+* Ankush Rai
 
 ## Deployment Link 
 * https://muscle-club-gym.onrender.com
