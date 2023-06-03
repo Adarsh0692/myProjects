@@ -12,6 +12,8 @@
 
 ## Author
 * Adarsh kushwaha
+* Aditya Shaw
+* Ankush Rai
 
 ## Deployment Link
 * https://twitter-clone-web.onrender.com
