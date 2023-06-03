@@ -16,7 +16,7 @@
 * Ankush Rai
 
 ## Deployment Link
-* https://twitter-clone-web.onrender.com
+* https://my-twitter-clone-website.onrender.com
 
 ## Data Structure
 ```json
